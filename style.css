@@ -1,0 +1,191 @@
+@keyframes zi {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zo {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes ud {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes lr {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+body {
+  font-family: 'Overpass', -apple-system, sans-serif;
+}
+
+h1 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+#cp {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.choose {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #c6c6c6;
+  width: 100%;
+  max-width: 300px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.les:active {
+  transform: scale(.9);
+}
+
+.chl {
+  overflow-x: scroll;
+  margin-top: 10px;
+  white-space: nowrap;
+}
+
+.les {
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #fff;
+  display: inline-block;
+  height: 100px;
+  width: 150px;
+  transition: transform .2s;
+  position: relative;
+}
+
+.les+.les {
+  margin-left: 12px;
+}
+
+.les>div:first-child {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.les svg {
+  width: 31px;
+  height: 31px;
+}
+
+.les>div:last-child {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+#mainwin {
+  position: fixed;
+  z-index: 9000;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  top: -105%;
+  background-color: #c6c6c6;
+  transition: top .4s ease-in-out;
+}
+
+#content {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+  left:0;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+#content div {
+  font-size: 1.5em;
+}
+
+.meaning {
+  font-size: 13px !important;
+}
+
+.okbtn {
+  background-color: #adadad;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0;
+  border: none;
+  outline: none;
+  transition: transform .4s;
+  animation: zi .5s;
+}
+
+.btns {
+  background-color: #adadad;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  transition: transform .4s;
+  animation: zi .5s;
+}
+
+.okbtn:active,
+.btns:active {
+  transform: scale(.9);
+}
+
+button {
+  font-family: inherit;
+}
+
+.bx {
+  vertical-align: middle;
+}

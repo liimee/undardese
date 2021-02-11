@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn Undardese</title>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
+  <script src="https://cdn.rawgit.com/simeydotme/donutty/2.0.0/dist/donutty.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 style="margin-left: 10px">Learn Undardese</h1>
+  <noscript>You need to enable JavaScript to learn Undardese here.</noscript>
+  <div id="cp">
+    <div class="choose">
+      <div><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg> Section 1</div>
+      <div class="chl">
+        <span class="les" onclick="les(1)">
+          <div>Basics 1</div>
+          <div><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="mainwin">
+    <div style="padding: 10px"><svg fill="none" onclick="exit()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+    <div id="content"></div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
