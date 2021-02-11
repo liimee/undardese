@@ -241,7 +241,6 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
             document.querySelector('#content').innerHTML='';
-            document.querySelector('#stuff').style.transform = 'scale(1)';
             b(d ? false : true);
           }, 501);
         }, 1300);
@@ -262,8 +261,7 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
             document.querySelector('#content').innerHTML = '';
-            document.querySelector('#stuff').style.transform = 'scale(1)';
-            b(d ? false : true);
+            b(d ? true : false);
           }, 501);
         }, 1300);
       }, 600);
