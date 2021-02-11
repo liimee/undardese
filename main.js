@@ -212,6 +212,7 @@ function askQuestion2(a, c, d) {
       c: document.createElement('div')
     };
     ed.a.className = 'corf';
+    ed.b.id='stuff';
     ed.b.innerHTML = `<div><div style="font-size: 1.8em">${c}</div><div style="font-size: .4em">${a}</div></div>`;
     ed.a.appendChild(ed.b);
     let bt = {
@@ -273,8 +274,8 @@ function askQuestion2(a, c, d) {
     ed.c.style.width = '100%';
     ed.c.style.display = 'flex';
     ed.c.style.justifyContent = 'space-evenly';
-    document.querySelector('#stuff').innerHTML = '';
-    document.querySelector('#stuff').appendChild(ed.a);
+    document.querySelector('#content').innerHTML = '';
+    document.querySelector('#content').appendChild(ed.a);
     document.querySelector('#content').appendChild(ed.c);
     document.querySelector('#stuff').style.animation = 'zi .5s';
   })
