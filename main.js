@@ -1,139 +1,88 @@
 if (localStorage.getItem('les') === null) localStorage.setItem('les', '[]');
 
-function les(lesi) {
-  le = true;
-  let accu = 0;
-  var nu = 20; // 14.2857143
-  switch (lesi) {
-    case 1:
-      document.querySelector('#mainwin').style.top = 0;
-      setTimeout(() => {
-        document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><div style="animation: ud .8s infinite;"><i class="bx bxs-hand-down"></i></div><div><b>dhœ</b></div><div class="meaning">this (noun)</div></div>';
-        addOkBtn().then(() => {
-          document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>dhœ</b></div>';
-          askQuestion([{ correct: true, val: '<i class="bx bxs-hand-down"></i>' }, { correct: false, val: '<i class="bx bx-happy"></i>' }])
-            .then((q1) => {
-              if (q1) accu += nu;
-              document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><div style="animation: lr .8s infinite;"><i class="bx bxs-hand-right"></i></div><div><b>adhœ</b></div><div class="meaning">that (noun)</div></div>';
-              addOkBtn().then(() => {
-                var ar = ['dhœ', 'adhœ'];
-                var re = ['this (noun)', 'that (noun)'];
-                var ra = Math.floor(Math.random() * (ar.length - 1));
-                document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + ar[ra] + '</b></div>';
-                askQuestion([{
-                    correct: (ra == 0) ? 1 : 0,
-                    val: '<i class="bx bxs-hand-down"></i>'
-                },
-                  {
-                    correct: (ra == 1) ? 1 : 0,
-                    val: '<i class="bx bxs-hand-right"></i>'
-                }]).then(q2 => {
-                  if (q2) accu += nu;
-                  ar.push('porœl');
-                  re.push('object');
-                  document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><div><i class="bx bxs-shapes"></i></div><div><b>porœl</b></div><div class="meaning">Object</div></div>';
-                  addOkBtn().then(() => {
-                    document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><div style="animation: ud .8s infinite;"><i class="bx bxs-hand-down"></i></div><div><b>ndhe</b></div><div class="meaning">this (adj.)</div></div>';
-                    let q = {};
-                    addOkBtn().then(() => {
-                      ar.push('ndhe');
-                      re.push('this (adj.)');
-                      ra = Math.floor(Math.random() * ar.length);
-                      document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + ar[ra] + '</b></div>';
-                      q.a = [{ correct: true, val: re[ra] }];
-                      q.b = re[ra];
-                      re.splice(ra, 1);
-                      q.a.push({ val: re[Math.floor(Math.random() * (ar.length - 1))], correct: false });
-                      re.splice(ra, 0, q.b);
-                      delete q.b;
-                      askQuestion(q.a).then(q3 => {
-                        delete q.a;
-                        if (q3) accu += nu;
-                      }).then(() => {
-                        ra = Math.floor(Math.random() * ar.length);
-                        document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + ar[ra] + '</b></div>';
-                        q = {};
-                        q.a = [{ correct: true, val: re[ra] }];
-                        q.b = re[ra];
-                        re.splice(ra, 1);
-                        q.a.push({ val: re[Math.floor(Math.random() * (ar.length - 1))], correct: false });
-                        re.splice(ra, 0, q.b);
-                        delete q.b;
-                        askQuestion(q.a).then(q4 => {
-                          if (q4) accu += nu;
-                          delete q.a;
-                        }).then(() => {
-                          ra = Math.floor(Math.random() * re.length);
-                          document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + ar[ra] + '</b></div>';
-                          q = {};
-                          q.a = [{ correct: true, val: re[ra] }];
-                          q.b = re[ra];
-                          re.splice(ra, 1);
-                          q.a.push({ val: re[Math.floor(Math.random() * (ar.length - 1))], correct: false });
-                          re.splice(ra, 0, q.b);
-                          delete q.b;
-                          askQuestion(q.a).then(q5 => {
-                            if (q5) accu += nu;
-                            delete q.a;
-                          }).then(() => {
-                            /*let h = document.createElement('div');
-                            h.style.width = '190px';
-                            h.style.height = 'auto';
-                            document.querySelector('#content').innerHTML = '';
-                            document.querySelector('#content').appendChild(h)
-                            new Donutty(h, {
-                              min: 0,
-                              max: 100,
-                              value: Math.round(accu),
-                              text: Math.round(accu),
-                              title: 'Accuracy'
-                            });
-                            le = false;*/
-                          }).then(() => {
-                            askQuestion2('ndhe', '<i class="bx bxs-shapes"></i>', false).then(q6 => {
-                              if (q6) accu += nu;
-                            }).then(() => {
-                              for (let g = 0; g < 10; g++) {
-                                var u = {
-                                  a: Math.floor(Math.random() * 1),
-                                  b: Math.floor(Math.random() * ar.length),
-                                  c: Math.floor(Math.random() * re.length)
-                                };
-                                if (u == 0) {
-                                  document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + ar[u.b] + '</b></div>';
-                                  q = {};
-                                  q.a = [{ correct: true, val: re[ra] }];
-                                  q.b = re[u.b];
-                                  re.splice(u.b, 1);
-                                  q.a.push({ val: re[Math.floor(Math.random() * (ar.length - 1))], correct: false });
-                                  re.splice(u.b, 0, q.b);
-                                  delete q.b;
-                                  askQuestion(q.a).then(an => {if(an)accu+nu});
-                                } else {
-                                  let j;
-                                  if(u.b == u.c){j=true}else{j=false};
-                                  askQuestion2(re[u.b], ar[u.c], j).then(an => {
-                                    if(an) accu+=nu;
-                                  })
-                                }
-                              }
-                            })
-                          })
-                        })
-                      })
-                    })
-                  })
-                })
-              })
-            })
-        }, 1000);
-      })
+var data = {
+  basics1: [
+    [
+      'bxs-hand-down',
+      'dhœ',
+      'this (noun)'
+    ],
+    [
+      'bxs-hand-right',
+      'adhœ',
+      'that (noun)'
+    ]
+  ]
+}
+
+function course(obj) {
+  document.querySelector('#mainwin').style.top = 0;
+  var things = {};
+  obj.forEach(v => {
+    things[v[1]] = {
+      meaning: v[2],
+      icon: v[0],
+      score: 0
+    }
+  });
+  doThing(things);
+}
+
+async function doThing(obj) {
+  for (let v in obj) {
+    if (obj[v].score == 0) {
+      await info({
+        name: v,
+        thing: obj
+      });
+      break;
+    } else if (obj[v].score != 5) {
+      if (Math.random() < 0.5) {
+        var ar = [
+          {
+            correct: true,
+            val: v
+          }
+        ]
+        var keys = Object.keys(obj);
+        keys.splice(keys.indexOf(v), 1);
+        document.querySelector('#content').innerHTML = '<div id="stuff" style="animation: zi .5s"><b>' + obj[v].meaning + '</b></div>';
+        var g = keys[Math.floor(Math.random() * (keys.length))];
+        ar.push({
+          correct: false,
+          val: g
+        })
+        var e = await askQuestion(ar);
+        obj[v].score += e;
+        doThing(obj);
+      } else {
+        var keys = Object.values(obj);
+        var a = keys.map(v => { if(v.score > 0) return v.icon });
+        a = a.filter(n => n);
+        a = a[Math.floor(Math.random() * a.length)];
+        var b = Object.keys(obj);
+        b = b[Math.floor(Math.random() * (b.length))];
+        var c = obj[b].icon == a;
+        var d = await askQuestion2(a, b, c);
+        obj[v].score += d;
+        doThing(obj);
+      }
+      break;
+    }
   }
 }
 
 function exit() {
   le = false;
   document.querySelector('#mainwin').style.top = '-105%';
+}
+
+async function info(object) {
+  var v = object.thing[object.name];
+  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="bx ${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div></div>`;
+  await addOkBtn();
+  object.thing[object.name].score++;
+  doThing(object.thing);
 }
 
 function addOkBtn() {
@@ -189,7 +138,7 @@ function askQuestion(a) {
             setTimeout(() => {
               document.querySelector('#stuff').innerHTML = '';
               document.querySelector('#stuff').style.transform = 'scale(1)';
-              b((v.correct) ? true : false);
+              b((v.correct) ? 1 : -1);
             }, 501);
           }, 1400);
           f.remove();
@@ -212,8 +161,8 @@ function askQuestion2(a, c, d) {
       c: document.createElement('div')
     };
     ed.a.className = 'corf';
-    ed.b.id='stuff';
-    ed.b.innerHTML = `<div><div style="font-size: 1.8em">${c}</div><div style="font-size: .4em">${a}</div></div>`;
+    ed.b.id = 'stuff';
+    ed.b.innerHTML = `<div><div style="font-size: 1.1em">${c}</div><div style="font-size: 0.6em"><i class="bx ${a}"></i></div></div>`;
     ed.a.appendChild(ed.b);
     let bt = {
       a: document.createElement('button'),
@@ -241,8 +190,8 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.transform = 'scale(0)';
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
-            document.querySelector('#content').innerHTML='';
-            b(d ? false : true);
+            document.querySelector('#content').innerHTML = '';
+            b(d ? -1 : 1);
           }, 501);
         }, 1300);
       }, 600);
@@ -262,7 +211,7 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
             document.querySelector('#content').innerHTML = '';
-            b(d ? true : false);
+            b(d ? 1 : -1);
           }, 501);
         }, 1300);
       }, 600);
