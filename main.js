@@ -31,7 +31,10 @@ var data = {
 }
 
 function course(obj) {
-  document.querySelector('#mainwin').style.top = 0;
+  document.querySelector('#par').style.display = 'block';
+  setTimeout(() => {
+    document.querySelector('#mainwin').style.left = 0;
+  }, 50);
   var things = {};
   obj.forEach(v => {
     things[v[1]] = {
@@ -89,7 +92,10 @@ async function doThing(obj) {
 
 function exit() {
   le = false;
-  document.querySelector('#mainwin').style.top = '-105%';
+  document.querySelector('#mainwin').style.left = '-105%';
+  setTimeout(() => {
+    document.querySelector('#par').style.display = 'none';
+  }, 400);
 }
 
 async function info(object) {

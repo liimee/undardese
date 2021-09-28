@@ -121,13 +121,13 @@ svg {
 #mainwin {
   position: fixed;
   z-index: 9000;
-  left: 0;
+  left: -105%;
   width: 100%;
   max-width: 100%;
   height: 100%;
-  top: -105%;
+  top: 0;
   background-color: #c6c6c6;
-  transition: top .4s ease-in-out;
+  transition: left .4s ease-in-out;
 }
 
 #content {
@@ -146,6 +146,16 @@ svg {
 
 #content div {
   font-size: 1.5em;
+}
+
+#par {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: hsla(246, 0%, 49%, 0.8);
 }
 
 .meaning {
@@ -198,4 +208,11 @@ button {
 .adj:after {
   content: '(adj.)';
   font-size: .6em;
+}
+
+@media (min-width: 700px) {
+  #mainwin {
+    width: 40%;
+    max-width: 400px;
+  }
 }
