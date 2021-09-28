@@ -82,7 +82,7 @@ svg {
 }
 
 .chl {
-  overflow-x: scroll;
+  overflow-x: auto;
   margin-top: 10px;
   white-space: nowrap;
 }
