@@ -31,6 +31,7 @@ var data = {
 }
 
 function course(obj) {
+  le = true;
   document.querySelector('#par').style.display = 'block';
   setTimeout(() => {
     document.querySelector('#mainwin').style.left = 0;
