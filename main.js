@@ -103,7 +103,7 @@ async function doThing(obj) {
         doThing(obj);
       } else {
         var keys = Object.values(obj);
-        var a = keys.map(v => { if(v.score > 0) return v.icon });
+        var a = keys.map(v => { if (v.score > 0) return v.icon });
         a = a.filter(n => n);
         a = a[Math.floor(Math.random() * a.length)];
         var b = Object.keys(obj);
@@ -114,6 +114,8 @@ async function doThing(obj) {
         doThing(obj);
       }
       break;
+    } else if (Object.keys(obj)[Object.keys(obj).length - 1] == v) {
+      document.querySelector('#content').innerText = 'We\'re done!';
     }
   }
 }

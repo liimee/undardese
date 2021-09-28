@@ -216,3 +216,7 @@ button {
     max-width: 400px;
   }
 }
+
+.les i {
+  font-size: 1.7em;
+}
