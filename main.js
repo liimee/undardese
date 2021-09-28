@@ -25,7 +25,34 @@ var data = {
     [
       'bxs-comment-check',
       'seri',
-      'OK'
+      'okay'
+    ]
+  ],
+  basics2: [
+    [
+      'bxs-binoculars',
+      'pār',
+      'see'
+    ],
+    [
+      'bxs-pizza',
+      'sapd',
+      'eat'
+    ],
+    [
+      'bx-user-voice',
+      'sol',
+      'say'
+    ],
+    [
+      'bxs-comment-detail',
+      'pēs',
+      'speak'
+    ],
+    [
+      'bxs-drink',
+      'kudi',
+      'drink'
     ]
   ]
 }
