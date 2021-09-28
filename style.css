@@ -189,3 +189,13 @@ button {
 .bx {
   vertical-align: middle;
 }
+
+.noun:after {
+  content: '(noun)';
+  font-size: .6em;
+}
+
+.adj:after {
+  content: '(adj.)';
+  font-size: .6em;
+}

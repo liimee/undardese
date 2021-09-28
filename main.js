@@ -3,14 +3,29 @@ if (localStorage.getItem('les') === null) localStorage.setItem('les', '[]');
 var data = {
   basics1: [
     [
-      'bxs-hand-down',
+      'bxs-hand-down noun',
       'dhœ',
       'this (noun)'
     ],
     [
-      'bxs-hand-right',
+      'bxs-hand-right noun',
       'adhœ',
       'that (noun)'
+    ],
+    [
+      'bxs-hand-down adj',
+      'ndhe',
+      'this (adj.)'
+    ],
+    [
+      'bxs-hand-right adj',
+      'andhe',
+      'that (adj.)'
+    ],
+    [
+      'bxs-comment-check',
+      'seri',
+      'OK'
     ]
   ]
 }
