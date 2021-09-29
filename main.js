@@ -116,6 +116,7 @@ async function doThing(obj) {
       break;
     } else if (Object.keys(obj)[Object.keys(obj).length - 1] == v) {
       document.querySelector('#content').innerText = 'We\'re done!';
+      document.querySelector('#content').style.animation = 'zi .5s';
     }
   }
 }

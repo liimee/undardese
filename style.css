@@ -203,11 +203,13 @@ button {
 .noun:after {
   content: '(noun)';
   font-size: .6em;
+  font-family: 'Overpass', sans-serif !important;
 }
 
 .adj:after {
   content: '(adj.)';
   font-size: .6em;
+  font-family: 'Overpass', sans-serif !important;
 }
 
 @media (min-width: 700px) {
