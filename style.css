@@ -127,7 +127,7 @@ svg {
   height: 100%;
   top: 0;
   background-color: #c6c6c6;
-  transition: left .4s ease-in-out;
+  transition: left .2s ease-in-out;
 }
 
 #content {
