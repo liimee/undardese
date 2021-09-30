@@ -143,12 +143,14 @@ function addOkBtn() {
     g.className = 'okbtn';
     g.innerText = 'Oh!';
     g.onclick = () => {
+      block();
       document.querySelector('#stuff').style.transform = 'scale(0)';
       document.querySelector('#stuff').style.animation = 'zo .5s';
       g.style.animation = 'zo .5s';
       setTimeout(() => {
         g.remove();
         a();
+        unblock();
       }, 501);
     }
     document.querySelector('#content').appendChild(g);
@@ -177,6 +179,7 @@ function askQuestion(a) {
       g.style.margin = '10px';
       g.innerHTML = v.val;
       g.onclick = () => {
+        block();
         document.querySelector('#stuff').style.transform = 'scale(0)';
         document.querySelector('#stuff').style.animation = 'zo .5s';
         f.style.animation = 'zo .5s';
@@ -190,6 +193,7 @@ function askQuestion(a) {
             setTimeout(() => {
               document.querySelector('#stuff').innerHTML = '';
               document.querySelector('#stuff').style.transform = 'scale(1)';
+              unblock();
               b((v.correct) ? 1 : -1);
             }, 501);
           }, 1400);
@@ -199,6 +203,14 @@ function askQuestion(a) {
       f.appendChild(g);
     });
   });
+}
+
+function block() {
+  document.body.style.pointerEvents = 'none';
+}
+
+function unblock() {
+  document.body.style.pointerEvents = 'initial';
 }
 
 window.onbeforeunload = function() {
@@ -229,6 +241,7 @@ function askQuestion2(a, c, d) {
     bt.a.style.width = bt.b.style.width = '100%';
     bt.a.style.margin = bt.b.style.margin = '10px';
     bt.a.onclick = () => {
+      block();
       document.querySelector('#stuff').style.transform = 'scale(0)';
       document.querySelector('#stuff').style.animation = 'zo .5s';
       ed.c.style.transform = 'scale(0)';
@@ -243,12 +256,14 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
             document.querySelector('#content').innerHTML = '';
+            unblock();
             b(d ? -1 : 1);
           }, 501);
         }, 1300);
       }, 600);
     }
     bt.b.onclick = () => {
+      block();
       document.querySelector('#stuff').style.transform = 'scale(0)';
       document.querySelector('#stuff').style.animation = 'zo .5s';
       ed.c.style.transform = 'scale(0)';
@@ -263,6 +278,7 @@ function askQuestion2(a, c, d) {
           document.querySelector('#stuff').style.animation = 'zo .5s';
           setTimeout(() => {
             document.querySelector('#content').innerHTML = '';
+            unblock();
             b(d ? 1 : -1);
           }, 501);
         }, 1300);
