@@ -117,6 +117,11 @@ async function doThing(obj) {
     } else if (Object.keys(obj)[Object.keys(obj).length - 1] == v) {
       document.querySelector('#content').innerText = 'We\'re done!';
       document.querySelector('#content').style.animation = 'zi .5s';
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
     }
   }
 }
