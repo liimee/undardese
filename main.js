@@ -58,32 +58,32 @@ var data = {
   basics3: [
     [
       'fas fa-user',
-      'you',
-      'you'
+      'nī',
+      'you (sing.)'
     ],
     [
       'fas fa-user-circle',
-      'me',
+      'nā',
       'me'
     ],
     [
       'fas fa-check',
-      'yes',
+      'ã',
       'yes'
     ],
     [
       'fas fa-times',
-      'no',
+      'lle',
       'no'
     ],
     [
       'fas fa-expand-arrows-alt',
-      'big',
+      'perye',
       'big'
     ],
     [
       'fas fa-compress-arrows-alt',
-      'small',
+      'chinne',
       'small'
     ]
   ],
