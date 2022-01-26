@@ -3,94 +3,94 @@ if (localStorage.getItem('les') === null) localStorage.setItem('les', '[]');
 var data = {
   basics1: [
     [
-      'bxs-hand-down noun',
+      'far fa-hand-point-down noun',
       'dhœ',
       'this (noun)'
     ],
     [
-      'bxs-hand-right noun',
+      'far fa-hand-point-right noun',
       'adhœ',
       'that (noun)'
     ],
     [
-      'bxs-hand-down adj',
+      'far fa-hand-point-down adj',
       'ndhe',
       'this (adj.)'
     ],
     [
-      'bxs-hand-right adj',
+      'far fa-hand-point-right adj',
       'andhe',
       'that (adj.)'
     ],
     [
-      'bxs-comment-check',
+      'fas fa-spell-check',
       'seri',
       'okay'
     ]
   ],
   basics2: [
     [
-      'bxs-binoculars',
+      'fas fa-binoculars',
       'pār',
       'see'
     ],
     [
-      'bxs-pizza',
+      'fas fa-utensils',
       'sapd',
       'eat'
     ],
     [
-      'bx-user-voice',
+      'fas fa-comment-alt',
       'sol',
       'say'
     ],
     [
-      'bxs-comment-detail',
+      'fas fa-comment',
       'pēs',
       'speak'
     ],
     [
-      'bxs-drink',
+      'fas fa-wine-glass',
       'kudi',
       'drink'
     ]
   ],
   basics3: [
     [
-      'bxs-user-pin',
+      'fas fa-user',
       'you',
       'you'
     ],
     [
-      'bxs-user-circle',
+      'fas fa-user-circle',
       'me',
       'me'
     ],
     [
-      'bx-check',
+      'fas fa-check',
       'yes',
       'yes'
     ],
     [
-      'bx-x',
+      'fas fa-times',
       'no',
       'no'
     ],
     [
-      'bx-expand',
+      'fas fa-expand-arrows-alt',
       'big',
       'big'
     ],
     [
-      'bx-collapse',
+      'fas fa-compress-arrows-alt',
       'small',
       'small'
     ]
   ],
   data: {
-    basics1: ['Basics 1', 'bx-sun'],
-    basics2: ['Basics 2', 'bx-sun'],
-    basics3: ['Basics 3', 'bx-sun']
+    basics1: ['Basics 1', 'far fa-sun'],
+    basics2: ['Basics 2', 'far fa-sun'],
+    basics3: ['Basics 3', 'far fa-sun']
   }
 }
 
@@ -188,7 +188,7 @@ function exit() {
 
 async function info(object) {
   var v = object.thing[object.name];
-  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="bx ${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div></div>`;
+  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div></div>`;
   await addOkBtn();
   object.thing[object.name].score++;
   doThing(object.thing);
@@ -241,7 +241,7 @@ function askQuestion(a) {
         document.querySelector('#stuff').style.animation = 'zo .5s';
         f.style.animation = 'zo .5s';
         setTimeout(() => {
-          document.querySelector('#stuff').innerHTML = v.correct ? '<i style="font-size: 1.9em" class="bx bxs-check-circle"></i>' : '<i style="font-size: 1.9em" class="bx bxs-x-circle"></i>';
+          document.querySelector('#stuff').innerHTML = v.correct ? '<i style="font-size: 1.9em" class="fas fa-check-circle"></i>' : '<i style="font-size: 1.9em" class="fas fa-times-circle"></i>';
           document.querySelector('#stuff').style.transform = 'scale(1)';
           document.querySelector('#stuff').style.animation = 'zi .5s';
           setTimeout(() => {
@@ -283,17 +283,17 @@ function askQuestion2(a, c, d) {
     };
     ed.a.className = 'corf';
     ed.b.id = 'stuff';
-    ed.b.innerHTML = `<div><div style="font-size: 1.1em">${c}</div><div style="font-size: 0.6em"><i class="bx ${a}"></i></div></div>`;
+    ed.b.innerHTML = `<div><div style="font-size: 1.1em">${c}</div><div style="font-size: 0.6em"><i class="${a}"></i></div></div>`;
     ed.a.appendChild(ed.b);
     let bt = {
       a: document.createElement('button'),
       b: document.createElement('button')
     };
     bt.a.className = bt.b.className = 'btns';
-    bt.a.innerHTML = '<i class="bx bx-x"></i>';
+    bt.a.innerHTML = '<i class="fas fa-times"></i>';
     bt.a.style.backgroundColor = '#ff4242';
     bt.a.style.color = bt.b.style.color = '#fff';
-    bt.b.innerHTML = '<i class="bx bx-check"></i>';
+    bt.b.innerHTML = '<i class="fas fa-check"></i>';
     bt.b.style.backgroundColor = '#23bc60';
     bt.a.style.width = bt.b.style.width = '100%';
     bt.a.style.margin = bt.b.style.margin = '10px';
@@ -304,7 +304,7 @@ function askQuestion2(a, c, d) {
       ed.c.style.transform = 'scale(0)';
       ed.c.style.animation = 'zo .5s';
       setTimeout(() => {
-        document.querySelector('#stuff').innerHTML = (d) ? '<i class="bx bxs-x-circle"></i>' : '<i class="bx bxs-check-circle"></i>';
+        document.querySelector('#stuff').innerHTML = (d) ? '<i class="fas fa-times-circle"></i>' : '<i class="fas fa-check-circle"></i>';
         document.querySelector('#stuff').style.transform = 'scale(1)';
         document.querySelector('#stuff').style.animation = 'zi .5s';
         ed.c.remove();
@@ -326,7 +326,7 @@ function askQuestion2(a, c, d) {
       ed.c.style.transform = 'scale(0)';
       ed.c.style.animation = 'zo .5s';
       setTimeout(() => {
-        document.querySelector('#stuff').innerHTML = (!d) ? '<i class="bx bxs-x-circle"></i>' : '<i class="bx bxs-check-circle"></i>';
+        document.querySelector('#stuff').innerHTML = (!d) ? '<i class="fas fa-times-circle"></i>' : '<i class="fas fa-check-circle"></i>';
         document.querySelector('#stuff').style.transform = 'scale(1)';
         document.querySelector('#stuff').style.animation = 'zi .5s';
         ed.c.remove();
