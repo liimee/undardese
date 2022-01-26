@@ -54,8 +54,27 @@ var data = {
       'kudi',
       'drink'
     ]
-  ]
+  ],
+  data: {
+    basics1: ['Basics 1', 'bx-sun'],
+    basics2: ['Basics 2', 'bx-sun']
+  }
 }
+
+Object.keys(data.data).forEach(v => {
+  const s = document.createElement('span');
+  s.className = 'les';
+  s.addEventListener('click', () => course(data[v]))
+  const t = document.createElement('div')
+  t.innerText = data.data[v][0];
+  s.appendChild(t)
+  const u = document.createElement('div');
+  s.appendChild(u)
+  const w = document.createElement('i');
+  w.className = 'bx '+data.data[v][1];
+  u.appendChild(w)
+  document.querySelector('.chl').appendChild(s);
+})
 
 function course(obj) {
   le = true;
