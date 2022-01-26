@@ -55,9 +55,42 @@ var data = {
       'drink'
     ]
   ],
+  basics3: [
+    [
+      'bxs-user-pin',
+      'you',
+      'you'
+    ],
+    [
+      'bxs-user-circle',
+      'me',
+      'me'
+    ],
+    [
+      'bx-check',
+      'yes',
+      'yes'
+    ],
+    [
+      'bx-x',
+      'no',
+      'no'
+    ],
+    [
+      'bx-expand',
+      'big',
+      'big'
+    ],
+    [
+      'bx-collapse',
+      'small',
+      'small'
+    ]
+  ],
   data: {
     basics1: ['Basics 1', 'bx-sun'],
-    basics2: ['Basics 2', 'bx-sun']
+    basics2: ['Basics 2', 'bx-sun'],
+    basics3: ['Basics 3', 'bx-sun']
   }
 }
 
