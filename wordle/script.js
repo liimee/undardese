@@ -5,7 +5,10 @@ function renderGr() {
     for(let d = 0; d<b; d++) {
       const f = document.createElement('span');
       f.className = 'g';
-      f.innerText = g[c][d]||'';
+      const i = document.createElement('span');
+      i.innerText = g[c][d]||'';
+      i.style.verticalAlign = 'middle';
+      f.appendChild(i)
       document.querySelector('#gr').appendChild(f)
     }
   }
