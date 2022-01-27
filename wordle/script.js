@@ -26,6 +26,7 @@ let g = [
 renderGr();
 
 let h = 0;
+const word = 'someth';
 
 function makeKeys(layout = "low") {
   let keys = {};
@@ -65,11 +66,22 @@ function makeKeys(layout = "low") {
       f.className = 'key';
       f.addEventListener('click', () => {
         if(g[h].length !== b) return;
+        check().forEach((v, i) => {
+          document.querySelector('#gr').children[(h*6)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
+        })
         h++;
       })
       el.appendChild(f)
     }
   });
+}
+
+function check() {
+  return g[h].map((v, i) => {
+    if(word.charAt(i) === v) return 1;
+    if(word.includes(v)) return 2;
+    return 3;
+  })
 }
 
 makeKeys()
