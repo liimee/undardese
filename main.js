@@ -1,4 +1,4 @@
-if (localStorage.getItem('les') === null) localStorage.setItem('les', '[]');
+if(!localStorage.getItem('t')) localStorage.setItem('t', 5)
 
 var data = {
   basics1: [
@@ -94,22 +94,36 @@ var data = {
   }
 }
 
-Object.keys(data.data).forEach(v => {
-  const s = document.createElement('span');
-  s.className = 'les';
-  s.addEventListener('click', () => course(data[v]))
-  const t = document.createElement('div')
-  t.innerText = data.data[v][0];
-  s.appendChild(t)
-  const u = document.createElement('div');
-  s.appendChild(u)
-  const w = document.createElement('i');
-  w.className = data.data[v][1];
-  u.appendChild(w)
-  document.querySelector('.chl').appendChild(s);
-})
+var f = {};
+
+function renderC() {
+  document.querySelector('.chl').innerHTML = '';
+  Object.keys(data.data).forEach(v => {
+    const s = document.createElement('span');
+    s.className = 'les';
+    s.addEventListener('click', () => course(data[v]))
+    const t = document.createElement('div')
+    t.innerText = data.data[v][0];
+    s.appendChild(t)
+    const x = document.createElement('div');
+    //feel free to change the maths, I'm not good at it hehehhe
+    x.innerText = `should take ~${Math.round(data[v].length*Number(localStorage.getItem('t'))/60)} minutes, based on my awful calculations`;
+    x.style.maxWidth = '80%';
+    s.appendChild(x);
+    const u = document.createElement('div');
+    s.appendChild(u)
+    const w = document.createElement('i');
+    w.className = data.data[v][1];
+    u.appendChild(w)
+    document.querySelector('.chl').appendChild(s);
+  })
+}
 
 function course(obj) {
+  f = {
+    a: 0,
+    b: []
+  };
   le = true;
   document.querySelector('#par').style.display = 'block';
   setTimeout(() => {
@@ -128,11 +142,15 @@ function course(obj) {
 
 async function doThing(obj) {
   for (let v in obj) {
+    f.a = 0;
+    const y = setInterval(() => f.a++, 1000);
     if (obj[v].score == 0) {
       await info({
         name: v,
         thing: obj
       });
+      clearInterval(y);
+      f.b.push(f.a);
       break;
     } else if (obj[v].score != 5) {
       if (Math.random() < 0.5) {
@@ -152,6 +170,8 @@ async function doThing(obj) {
         })
         var e = await askQuestion(ar);
         obj[v].score += e;
+        clearInterval(y);
+        f.b.push(f.a);
         doThing(obj);
       } else {
         var keys = Object.values(obj);
@@ -163,12 +183,18 @@ async function doThing(obj) {
         var c = obj[b].icon == a;
         var d = await askQuestion2(a, b, c);
         obj[v].score += d;
+        clearInterval(y);
+        f.b.push(f.a);
         doThing(obj);
       }
       break;
     } else if (Object.keys(obj)[Object.keys(obj).length - 1] == v) {
+      clearInterval(y);
       document.querySelector('#content').innerText = 'We\'re done!';
       document.querySelector('#content').style.animation = 'zi .5s';
+      console.log(f.b)
+      localStorage.setItem('t', f.b.reduce((a, b) => a + b, 0) / f.b.length)
+      renderC();
       confetti({
         particleCount: 100,
         spread: 70,
@@ -354,3 +380,5 @@ function askQuestion2(a, c, d) {
     document.querySelector('#stuff').style.animation = 'zi .5s';
   })
 }
+
+renderC();
