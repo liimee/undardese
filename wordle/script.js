@@ -112,17 +112,43 @@ function finish(aaa) {
     b.innerText = aaa?'vāłthnge!':'aīo!'; //translate these
 
     const c = document.createElement('p');
-    c.innerHTML = aaa?'vārthekandpudipe mudchtīnge!':'nīng ivāti thōthtīnge!<br>nnōrvāti myārchikrīnglā?';//the last line needs to be a reset button (but same word still)
-    
-    a.style.opacity = b.style.opacity = c.style.opacity = 0;
-    a.style.transition = b.style.transition = c.style.transition = 'opacity .4s';
+    c.innerText = aaa?'vārthekandpudipe mudchtīnge!':'nīng ivāti thōthtīnge!';//the last line needs to be a reset button (but same word still)
+
+    const d = document.createElement('button');
+    d.innerText = 'nnōrvāti myārchikrīnglā?';
+    d.addEventListener('click', () => {
+      g = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ];
+      h = 0;
+      word = wordlist[Math.floor(Math.random() * wordlist.length)];
+      renderGr();
+      a.style.opacity = b.style.opacity = c.style.opacity = d.style.opacity = 0;
+      setTimeout(() => {
+        document.querySelector('#kb').style.padding = 0;
+        a.remove();
+        b.remove();
+        c.remove();
+        d.remove();
+        makeKeys();
+      }, 400)
+    })
+
+    a.style.opacity = b.style.opacity = c.style.opacity = d.style.opacity = 0;
+    a.style.transition = b.style.transition = c.style.transition  = d.style.transition = 'opacity .4s';
 
     document.querySelector('#kb').appendChild(a);
     document.querySelector('#kb').appendChild(b);
     document.querySelector('#kb').appendChild(c);
+    document.querySelector('#kb').appendChild(d);
 
     setTimeout(() => {
-      a.style.opacity = b.style.opacity = c.style.opacity = 1;
+      a.style.opacity = b.style.opacity = c.style.opacity = d.style.opacity = 1;
     }, 400)
   }, 1000);
 }
