@@ -83,7 +83,10 @@ svg {
 
 .chl {
   margin-top: 10px;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: y mandatory;
+  height:200px;
+  overflow: auto;
+  border-radius: 8px
 }
 
 .les {
