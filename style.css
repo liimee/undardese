@@ -85,6 +85,7 @@ svg {
   overflow-x: auto;
   margin-top: 10px;
   white-space: nowrap;
+  scroll-snap-type: x mandatory;
 }
 
 .les {
@@ -96,6 +97,7 @@ svg {
   width: 150px;
   transition: transform .2s;
   position: relative;
+  scroll-snap-align: start
 }
 
 .les+.les {

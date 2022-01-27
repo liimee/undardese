@@ -89,8 +89,8 @@ var data = {
   ],
   data: {
     basics1: ['Basics 1', 'far fa-sun'],
-    basics2: ['Basics 2', 'far fa-sun'],
-    basics3: ['Basics 3', 'far fa-sun']
+    basics2: ['Basics 2', 'far fa-walking'],
+    basics3: ['Basics 3', 'far fa-users']
   }
 }
 
