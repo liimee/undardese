@@ -1,6 +1,6 @@
+const a = b = 6;
 function renderGr() {
   document.querySelector('#gr').innerHTML = '';
-  const a = b = 6;
   for(let c = 0; c<a; c++) {
     for(let d = 0; d<b; d++) {
       const f = document.createElement('span');
@@ -33,7 +33,7 @@ function makeKeys(layout = "low") {
   keys.low = ["õwertyuiop", "asdfghjkl", "æœcvbnm", "⇪̃⌫"].map((e) => e.split``);
   keys.up = ["qwērtyūīōp", "āsdfghjkł", "zxcvb̃m", "↥⌫"].map((e) => e.split``);
 
-  keys[layout].forEach((e) => {
+  keys[layout].forEach((e, i) => {
     let el = document.createElement("div");
     el.classList.add("key-row");
     kb.appendChild(el);
@@ -59,6 +59,16 @@ function makeKeys(layout = "low") {
         };
       }
     });
+    if(i === 3) {
+      const f = document.createElement('span')
+      f.innerText = 'Enter'
+      f.className = 'key';
+      f.addEventListener('click', () => {
+        if(g[h].length !== b) return;
+        h++;
+      })
+      el.appendChild(f)
+    }
   });
 }
 
