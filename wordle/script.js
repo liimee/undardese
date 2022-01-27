@@ -73,6 +73,13 @@ function makeKeys(layout = "low") {
       f.addEventListener('click', () => {
         if(g[h].length !== b) return;
         bg(false)
+        if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
+          finish(true);
+          return;
+        } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
+          finish(false);
+          return;
+        }
         h++;
       })
       el.appendChild(f)
@@ -80,11 +87,44 @@ function makeKeys(layout = "low") {
   });
 }
 
+function finish(aaa) {
+  Object.values(document.querySelector('#kb').children).forEach((v, i) => {
+    v.style.transition = `opacity .4s ${i/10}s`
+    v.style.opacity = 0;
+  })
+  setTimeout(() => {
+    document.querySelector('#kb').innerHTML = '';
+    document.querySelector('#kb').style.padding = '1em';
+
+    const a = document.createElement('i');
+    a.style.transition = 'opacity .4s';
+    a.className = `fas fa-${aaa?'check-circle':'frown'}`;
+    a.style.fontSize = '4em';
+
+    const b = document.createElement('h1');
+    b.innerText = aaa?'Congratulations!':'Uh-oh'; //translate these
+
+    const c = document.createElement('p');
+    c.innerText = aaa?'You have successfully solved the wordle!':'some text here idk';
+
+    a.style.opacity = b.style.opacity = c.style.opacity = 0;
+    a.style.transition = b.style.transition = c.style.transition = 'opacity .4s';
+
+    document.querySelector('#kb').appendChild(a);
+    document.querySelector('#kb').appendChild(b);
+    document.querySelector('#kb').appendChild(c);
+
+    setTimeout(() => {
+      a.style.opacity = b.style.opacity = c.style.opacity = 1;
+    }, 400)
+  }, 1000);
+}
+
 function bg(f) {
   g.forEach((_, s) => {
     if(!f||(f&&s<h)){
       check(s).forEach((v, i) => {
-        if(s===h)document.querySelector('#gr').children[(s*6)+i].style.transition = `background-color .4s ${i/10}s`
+        if(s===h) document.querySelector('#gr').children[(s*6)+i].style.transition = `background-color .4s ${i/10}s`
         document.querySelector('#gr').children[(s*6)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
       })
     }
