@@ -166,11 +166,14 @@ function bg(f) {
 
 function check(h) {
   return g[h].map((v, i) => {
-    if(splitWord()[i] === v) return 1;
-    if(word.includes(v)) return 2;
+    if(splitWord()[i] === v) return 1
+    if(word.includes(v) && (g[h].slice(0,i).join``.split(v).length-1)<(word.split(v).length-1)) {
+    	return 2
+    };
     return 3;
   })
 }
+
 
 function splitWord(){
 	var arr=[]
