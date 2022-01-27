@@ -57,7 +57,7 @@ var data = {
   ],
   basics3: [
     [
-      'fas fa-user',
+      'fas fa-user singular',
       'nī',
       'you (sing.)'
     ],

@@ -198,16 +198,21 @@ button {
   vertical-align: middle;
 }
 
-.noun:after {
-  content: '(noun)';
+.noun:after,.adj:after,.singular:after {
   font-size: .6em;
   font-family: 'Overpass', sans-serif !important;
 }
 
+.noun:after {
+  content: '(noun)';
+}
+
 .adj:after {
   content: '(adj.)';
-  font-size: .6em;
-  font-family: 'Overpass', sans-serif !important;
+}
+
+.singular:after {
+  content: '(sing.)';
 }
 
 @media (min-width: 700px) {
