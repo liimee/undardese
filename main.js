@@ -89,8 +89,8 @@ var data = {
   ],
   data: {
     basics1: ['Basics 1', 'far fa-sun'],
-    basics2: ['Basics 2', 'far fa-walking'],
-    basics3: ['Basics 3', 'far fa-users']
+    basics2: ['Basics 2', 'fas fa-walking'],
+    basics3: ['Basics 3', 'fas fa-users']
   }
 }
 
@@ -104,7 +104,7 @@ Object.keys(data.data).forEach(v => {
   const u = document.createElement('div');
   s.appendChild(u)
   const w = document.createElement('i');
-  w.className = 'bx '+data.data[v][1];
+  w.className = data.data[v][1];
   u.appendChild(w)
   document.querySelector('.chl').appendChild(s);
 })
