@@ -109,11 +109,11 @@ function finish(aaa) {
     a.style.fontSize = '4em';
 
     const b = document.createElement('h1');
-    b.innerText = aaa?'Congratulations!':'Uh-oh'; //translate these
+    b.innerText = aaa?'vāłthnge!':'aīo!'; //translate these
 
     const c = document.createElement('p');
-    c.innerText = aaa?'You have successfully solved the wordle!':'some text here idk';
-
+    c.innerHTML = aaa?'vārthekandpudipe mudchtīnge!':'nīng ivāti thōthtīnge!<br>nnōrvāti myārchikrīnglā?';//the last line needs to be a reset button (but same word still)
+    
     a.style.opacity = b.style.opacity = c.style.opacity = 0;
     a.style.transition = b.style.transition = c.style.transition = 'opacity .4s';
 
