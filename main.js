@@ -23,7 +23,7 @@ var data = {
       'that (adj.)'
     ],
     [
-      'fas fa-spell-check',
+      'far fa-thumbs-up',
       'seri',
       'okay'
     ]
