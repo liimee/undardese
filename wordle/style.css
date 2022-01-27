@@ -2,7 +2,7 @@ body {
   background-color: rgb(17, 24, 39);
   color: #fff;
   text-align: center;
-  font-family: sans-serif;
+  font-family: system-ui,sans-serif;
 }
 
 #gr {
@@ -12,6 +12,7 @@ body {
   grid-template-rows: repeat(6,4em);
   justify-content: center;
   margin: 1em;
+  font-size: clamp(10px,3vw,15px)
 }
 
 .g {
@@ -25,7 +26,7 @@ body {
 
 .key-row {
 	display: flex;
-	width: clamp(100px, 100vw, 500px);
+	width: clamp(100px, 90vw, 500px);
 }
 
 .key {
