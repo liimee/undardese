@@ -97,7 +97,6 @@ function finish(aaa) {
     document.querySelector('#kb').style.padding = '1em';
 
     const a = document.createElement('i');
-    a.style.transition = 'opacity .4s';
     a.className = `fas fa-${aaa?'check-circle':'frown'}`;
     a.style.fontSize = '4em';
 
