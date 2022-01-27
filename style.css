@@ -82,26 +82,22 @@ svg {
 }
 
 .chl {
-  overflow-x: auto;
   margin-top: 10px;
-  white-space: nowrap;
   scroll-snap-type: x mandatory;
 }
 
 .les {
   border-radius: 8px;
-  padding: 8px;
+  padding: 1em;
   background-color: #fff;
-  display: inline-block;
-  height: 100px;
-  width: 150px;
+  display: block;
   transition: transform .2s;
   position: relative;
   scroll-snap-align: start
 }
 
 .les+.les {
-  margin-left: 12px;
+  margin-top: .5em;
 }
 
 .les>div:first-child {
@@ -116,8 +112,8 @@ svg {
 
 .les>div:last-child {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  top: 1em;
+  right: 1em;
 }
 
 #mainwin {
