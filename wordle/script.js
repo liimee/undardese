@@ -25,7 +25,14 @@ let g = [
 ]
 
 let h = 0;
-const word = 'someth';
+const wordlist = [
+  'someth',
+  'abcdef',
+  'ghijkl',
+  'mnopqr',
+  'stuvwx'
+]
+const word = wordlist[Math.floor(Math.random() * wordlist.length)];
 
 function makeKeys(layout = "low") {
   let keys = {};
