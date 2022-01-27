@@ -12,6 +12,7 @@ function renderGr() {
       document.querySelector('#gr').appendChild(f)
     }
   }
+  bg(true)
 }
 
 let g = [
@@ -22,8 +23,6 @@ let g = [
   [],
   []
 ]
-
-renderGr();
 
 let h = 0;
 const word = 'someth';
@@ -66,9 +65,7 @@ function makeKeys(layout = "low") {
       f.className = 'key';
       f.addEventListener('click', () => {
         if(g[h].length !== b) return;
-        check().forEach((v, i) => {
-          document.querySelector('#gr').children[(h*6)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
-        })
+        bg(false)
         h++;
       })
       el.appendChild(f)
@@ -76,7 +73,17 @@ function makeKeys(layout = "low") {
   });
 }
 
-function check() {
+function bg(f) {
+  g.forEach((_, s) => {
+    if(!f||(f&&s<h)){
+      check(s).forEach((v, i) => {
+        document.querySelector('#gr').children[(s*6)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
+      })
+    }
+  })
+}
+
+function check(h) {
   return g[h].map((v, i) => {
     if(word.charAt(i) === v) return 1;
     if(word.includes(v)) return 2;
@@ -85,3 +92,4 @@ function check() {
 }
 
 makeKeys()
+renderGr();
