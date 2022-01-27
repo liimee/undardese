@@ -84,6 +84,7 @@ function bg(f) {
   g.forEach((_, s) => {
     if(!f||(f&&s<h)){
       check(s).forEach((v, i) => {
+        if(s===h)document.querySelector('#gr').children[(s*6)+i].style.transition = `background-color .4s ${i/10}s`
         document.querySelector('#gr').children[(s*6)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
       })
     }
