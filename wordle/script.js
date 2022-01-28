@@ -83,8 +83,8 @@ function makeKeys(layout = "low") {
 function enter() {
   if (g[h].length !== b) return;
   if (!wordlist.includes(g[h].join(''))) {
-    document.querySelector('#er').style.display = 'block';
-    setTimeout(() => document.querySelector('#er').style.display = 'none', 2000);
+    document.querySelector('#er').style.opacity = '1';
+    setTimeout(() => document.querySelector('#er').style.opacity = '0', 2000);
     return;
   }
   bg(false)
