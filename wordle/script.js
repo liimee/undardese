@@ -187,9 +187,15 @@ function bg(f) {
 }
 
 function check(h) {
+  const e = {}
   return g[h].map((v, i) => {
-    if (splitWord()[i] === v) return 1
-    if (find(v).every(v => i < v) && !find(v).every(ve => g[h][ve] === v)) {
+    e[v] = (e[v]||0)+1;
+    if (splitWord()[i] === v) {
+      e[v]--;
+      return 1
+    }
+
+    if (e[v] <= find(v).length && !find(v).every(ve => g[h][ve] === v)) {
       return 2
     }
     return 3;
