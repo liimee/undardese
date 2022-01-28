@@ -52,3 +52,17 @@ button {
   padding: .5em;
   color: inherit;
 }
+
+#er {
+  background-color: #fff;
+  position: absolute;
+  width: max-content;
+  color: #000;
+  border-radius: 4px;
+  padding: 1em;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 2em;
+  font-weight: bold;
+  display: none;
+}

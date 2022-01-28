@@ -81,21 +81,28 @@ function makeKeys(layout = "low") {
       const f = document.createElement('span')
       f.innerText = 'Enter'
       f.className = 'key';
-      f.addEventListener('click', () => {
-        if(g[h].length !== b) return;
-        bg(false)
-        if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
-          finish(true);
-          return;
-        } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
-          finish(false);
-          return;
-        }
-        h++;
-      })
+      f.addEventListener('click', () => enter())
       el.appendChild(f)
     }
   });
+}
+
+function enter() {
+  if(g[h].length !== b) return;
+  if(!wordlist.includes(g[h].join(''))) {
+    document.querySelector('#er').style.display = 'block';
+    setTimeout(() => document.querySelector('#er').style.display = 'none', 2000);
+    return;
+  }
+  bg(false)
+  if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
+    finish(true);
+    return;
+  } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
+    finish(false);
+    return;
+  }
+  h++;
 }
 
 window.addEventListener('keydown', e => {
@@ -103,16 +110,7 @@ window.addEventListener('keydown', e => {
     g[h].pop();
     renderGr();
   } else if(e.key === 'Enter') {
-    if(g[h].length !== b) return;
-    bg(false)
-    if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
-      finish(true);
-      return;
-    } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
-      finish(false);
-      return;
-    }
-    h++;
+    enter()
   } else {
     if(![].concat.apply([], keys.low).includes(e.key) && ![].concat.apply([], keys.up).includes(e.key)) return;
 
