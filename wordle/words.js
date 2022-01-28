@@ -3,7 +3,7 @@ const wordlist = [
   'vārthe',//word
   'vērnge',//roots
   'erakkœ',//lower (v.)
-  'kuripa',//especially, specifically
+  'kuripā',//especially, specifically
   'kaddhõ',//letter (the mail kind of letter)
   "mārāme",//without changing
   "pūmāle",//garland
