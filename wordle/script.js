@@ -1,11 +1,11 @@
 const a = 6,
-  b = 6;
+b = 6;
 
 let fnish = false;
 
 document.getElementById("gr").style.gridTemplateColumns =
-  document.getElementById("gr").style.gridTemplateAreas =
-  `repeat(${a}, 4em)`
+document.getElementById("gr").style.gridTemplateAreas =
+`repeat(${a}, 4em)`
 
 function renderGr() {
   document.querySelector('#gr').innerHTML = '';
@@ -64,7 +64,7 @@ function makeKeys(layout = "low") {
         cel.onclick = (e) => {
           if (g[h].length === b && e.target.innerText != "̃" || fnish) return;
           if (e.target.innerText == "̃")
-            g[h][g[h].length - 1] += e.target.innerText
+          g[h][g[h].length - 1] += e.target.innerText
           else g[h].push(e.target.innerText)
           renderGr();
         };
@@ -109,7 +109,7 @@ window.addEventListener('keydown', e => {
 
     if (g[h].length === b && e.key != "̃") return;
     if (e.key == "̃")
-      g[h][g[h].length - 1] += e.key
+    g[h][g[h].length - 1] += e.key
     else g[h].push(e.key)
     renderGr();
   }
@@ -189,9 +189,9 @@ function bg(f) {
 function check(h) {
   return g[h].map((v, i) => {
     if (splitWord()[i] === v) return 1
-    if (word.includes(v) && (g[h].slice(0, i).join``.split(v).length - 1) < (word.split(v).length - 1)) {
+    if (find(v).every(v => i < v) && !find(v).every(ve => g[h][ve] === v)) {
       return 2
-    };
+    }
     return 3;
   })
 }
@@ -207,6 +207,16 @@ function splitWord() {
     }
   })
   return arr
+}
+
+function find(w) {
+  let startIndex = 0;
+  const i = [];
+  while ((index = word.indexOf(w, startIndex)) > -1) {
+    i.push(index);
+    startIndex = index + w.length;
+  }
+  return i;
 }
 
 makeKeys()
