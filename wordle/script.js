@@ -1,20 +1,20 @@
 const a = 6,
-b=6;
+  b = 6;
 
 let fnish = false;
 
-document.getElementById("gr").style.gridTemplateColumns=
-document.getElementById("gr").style.gridTemplateAreas=
-`repeat(${a}, 4em)`
+document.getElementById("gr").style.gridTemplateColumns =
+  document.getElementById("gr").style.gridTemplateAreas =
+  `repeat(${a}, 4em)`
 
 function renderGr() {
   document.querySelector('#gr').innerHTML = '';
-  for(let c = 0; c<a; c++) {
-    for(let d = 0; d<b; d++) {
+  for (let c = 0; c < a; c++) {
+    for (let d = 0; d < b; d++) {
       const f = document.createElement('span');
       f.className = 'g';
       const i = document.createElement('span');
-      i.innerText = g[c][d]||'';
+      i.innerText = g[c][d] || '';
       i.style.verticalAlign = 'middle';
       f.appendChild(i)
       document.querySelector('#gr').appendChild(f)
@@ -39,13 +39,44 @@ keys.low[0].unshift("õ");
 
 let h = 0;
 const wordlist = [
-	//I've marked the meaning btw
+  //I've marked the meaning btw
   'vārthe',//word
   'vērnge',//roots
   'erakkœ',//lower (v.)
   'kuripa',//especially, specifically
-  'kaddhõ'//letter (the mail kind of letter)
-].map(e=>e.replace(/õ/g, "õ"))
+  'kaddhõ',//letter (the mail kind of letter)
+  "mārāme",//without changing
+  "pūmāle",//garland
+  "pałeye",//old
+  "pudhus",//new
+  "chinne",//small
+  "mīnawr",//fisherman
+  "mīnnge",//fish (pl.)
+  "thanni",//water
+  "thīane",//extinguish
+  "kādhal",//love
+  "kodume",//tyranny, torture, much annoyance
+  "chakre",//sugar
+  "uppāne",//salty
+  "mandōd",//skull
+  "rkānge",//are there, exist
+  "kālnge",//legs
+  "kainge",//arms, hands
+  "norērl",//lung
+  "edheyõ",//heart
+  "manshe",//human
+  "velang",//animal
+  "kāinge",//vegetables
+  "surkne",//shrunken, compressed
+  "persāk",//expand
+  "pirike",//to seperate, to open (a plastic package)
+  "vedike",//to explode
+  "kāpāth",//help, save, rescue
+  "valake",//to grow (something/someone), to brush (teeth)
+  "valare",//(for someone/something) to grow
+  "parave",//bird
+  "maraōd"//tree bark
+].map(e => e.replace(/õ/g, "õ"))
 var word = wordlist[Math.floor(Math.random() * wordlist.length)];
 function makeKeys(layout = "low") {
   kb.innerText = "";
@@ -69,15 +100,15 @@ function makeKeys(layout = "low") {
         };
       } else {
         cel.onclick = (e) => {
-          if(g[h].length === b&&e.target.innerText!="̃"||fnish) return;
-          if(e.target.innerText=="̃")
-          g[h][g[h].length-1]+=e.target.innerText
+          if (g[h].length === b && e.target.innerText != "̃" || fnish) return;
+          if (e.target.innerText == "̃")
+            g[h][g[h].length - 1] += e.target.innerText
           else g[h].push(e.target.innerText)
           renderGr();
         };
       }
     });
-    if(i === 3) {
+    if (i === 3) {
       const f = document.createElement('span')
       f.innerText = 'Enter'
       f.className = 'key';
@@ -88,17 +119,17 @@ function makeKeys(layout = "low") {
 }
 
 function enter() {
-  if(g[h].length !== b) return;
-  if(!wordlist.includes(g[h].join(''))) {
+  if (g[h].length !== b) return;
+  if (!wordlist.includes(g[h].join(''))) {
     document.querySelector('#er').style.display = 'block';
     setTimeout(() => document.querySelector('#er').style.display = 'none', 2000);
     return;
   }
   bg(false)
-  if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
+  if (Array(6).fill(1).every((value, index) => value === check(h)[index])) {
     finish(true);
     return;
-  } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
+  } else if (g[5].length > 0 && g[5].every((value) => value !== 1)) {
     finish(false);
     return;
   }
@@ -106,17 +137,17 @@ function enter() {
 }
 
 window.addEventListener('keydown', e => {
-  if(e.key === 'Backspace') {
+  if (e.key === 'Backspace') {
     g[h].pop();
     renderGr();
-  } else if(e.key === 'Enter') {
+  } else if (e.key === 'Enter') {
     enter()
   } else {
-    if(![].concat.apply([], keys.low).includes(e.key) && ![].concat.apply([], keys.up).includes(e.key)) return;
+    if (![].concat.apply([], keys.low).includes(e.key) && ![].concat.apply([], keys.up).includes(e.key)) return;
 
-    if(g[h].length === b&&e.key!="̃") return;
-    if(e.key=="̃")
-    g[h][g[h].length-1]+=e.key
+    if (g[h].length === b && e.key != "̃") return;
+    if (e.key == "̃")
+      g[h][g[h].length - 1] += e.key
     else g[h].push(e.key)
     renderGr();
   }
@@ -125,7 +156,7 @@ window.addEventListener('keydown', e => {
 function finish(aaa) {
   fnish = true;
   Object.values(document.querySelector('#kb').children).forEach((v, i) => {
-    v.style.transition = `opacity .4s ${i/10}s`
+    v.style.transition = `opacity .4s ${i / 10}s`
     v.style.opacity = 0;
   })
   setTimeout(() => {
@@ -133,14 +164,14 @@ function finish(aaa) {
     document.querySelector('#kb').style.padding = '1em';
 
     const a = document.createElement('i');
-    a.className = `fas fa-${aaa?'check-circle':'frown'}`;
+    a.className = `fas fa-${aaa ? 'check-circle' : 'frown'}`;
     a.style.fontSize = '4em';
 
     const b = document.createElement('h1');
-    b.innerText = aaa?'vāłthnge!':'aīo!'; //translate these
+    b.innerText = aaa ? 'vāłthnge!' : 'aīo!'; //translate these
 
     const c = document.createElement('p');
-    c.innerText = aaa?'vārthekandpudipe mudchtīnge!':'nīng ivāti thōthtīnge!';//the last line needs to be a reset button (but same word still)
+    c.innerText = aaa ? 'vārthekandpudipe mudchtīnge!' : 'nīng ivāti thōthtīnge!';//the last line needs to be a reset button (but same word still)
 
     const d = document.createElement('button');
     d.innerText = 'nnōrvāti myārchikrīnglā?';
@@ -169,7 +200,7 @@ function finish(aaa) {
     })
 
     a.style.opacity = b.style.opacity = c.style.opacity = d.style.opacity = 0;
-    a.style.transition = b.style.transition = c.style.transition  = d.style.transition = 'opacity .4s';
+    a.style.transition = b.style.transition = c.style.transition = d.style.transition = 'opacity .4s';
 
     document.querySelector('#kb').appendChild(a);
     document.querySelector('#kb').appendChild(b);
@@ -184,10 +215,10 @@ function finish(aaa) {
 
 function bg(f) {
   g.forEach((_, s) => {
-    if(!f||(f&&s<h)){
+    if (!f || (f && s < h)) {
       check(s).forEach((v, i) => {
-        if(s===h)document.querySelector('#gr').children[(s*a)+i].style.transition = `background-color .4s ${i/10}s`
-        document.querySelector('#gr').children[(s*a)+i].style.backgroundColor = v===3?'rgba(255, 255, 255, 0.5)':v===2?'rgb(202, 138, 4)':'rgb(21, 128, 61)'
+        if (s === h) document.querySelector('#gr').children[(s * a) + i].style.transition = `background-color .4s ${i / 10}s`
+        document.querySelector('#gr').children[(s * a) + i].style.backgroundColor = v === 3 ? 'rgba(255, 255, 255, 0.5)' : v === 2 ? 'rgb(202, 138, 4)' : 'rgb(21, 128, 61)'
       })
     }
   })
@@ -195,25 +226,25 @@ function bg(f) {
 
 function check(h) {
   return g[h].map((v, i) => {
-    if(splitWord()[i] === v) return 1
-    if(word.includes(v) && (g[h].slice(0,i).join``.split(v).length-1)<(word.split(v).length-1)) {
-    	return 2
+    if (splitWord()[i] === v) return 1
+    if (word.includes(v) && (g[h].slice(0, i).join``.split(v).length - 1) < (word.split(v).length - 1)) {
+      return 2
     };
     return 3;
   })
 }
 
 
-function splitWord(){
-	var arr=[]
-	word.split``.forEach(e=>{
-		if(e=="̃"){
-			arr[arr.length-1]+=e
-		}else{
-			arr.push(e)
-		}
-	})
-	return arr
+function splitWord() {
+  var arr = []
+  word.split``.forEach(e => {
+    if (e == "̃") {
+      arr[arr.length - 1] += e
+    } else {
+      arr.push(e)
+    }
+  })
+  return arr
 }
 
 makeKeys()
