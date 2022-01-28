@@ -1,6 +1,8 @@
 const a = 6,
 b=6;
 
+let fnish = false;
+
 document.getElementById("gr").style.gridTemplateColumns=
 document.getElementById("gr").style.gridTemplateAreas=
 `repeat(${a}, 4em)`
@@ -30,6 +32,11 @@ let g = [
   []
 ]
 
+let keys = {};
+keys.low = ["wertyuiop", "asdfghjkl", "æœcvbnm", "⇪̃⌫"].map((e) => e.split``);
+keys.up = ["qwērtyūīōp", "āsdfghjkł", "zxcvb̃m", "↥⌫"].map((e) => e.split``);
+keys.low[0].unshift("õ");
+
 let h = 0;
 const wordlist = [
 	//I've marked the meaning btw
@@ -41,11 +48,7 @@ const wordlist = [
 ].map(e=>e.replace(/õ/g, "õ"))
 var word = wordlist[Math.floor(Math.random() * wordlist.length)];
 function makeKeys(layout = "low") {
-  let keys = {};
   kb.innerText = "";
-  keys.low = ["wertyuiop", "asdfghjkl", "æœcvbnm", "⇪̃⌫"].map((e) => e.split``);
-  keys.up = ["qwērtyūīōp", "āsdfghjkł", "zxcvb̃m", "↥⌫"].map((e) => e.split``);
-  keys.low[0].unshift("õ")
   keys[layout].forEach((e, i) => {
     let el = document.createElement("div");
     el.classList.add("key-row");
@@ -66,7 +69,7 @@ function makeKeys(layout = "low") {
         };
       } else {
         cel.onclick = (e) => {
-          if(g[h].length === b&&e.target.innerText!="̃") return;
+          if(g[h].length === b&&e.target.innerText!="̃"||fnish) return;
           if(e.target.innerText=="̃")
           g[h][g[h].length-1]+=e.target.innerText
           else g[h].push(e.target.innerText)
@@ -95,7 +98,34 @@ function makeKeys(layout = "low") {
   });
 }
 
+window.addEventListener('keydown', e => {
+  if(e.key === 'Backspace') {
+    g[h].pop();
+    renderGr();
+  } else if(e.key === 'Enter') {
+    if(g[h].length !== b) return;
+    bg(false)
+    if(Array(6).fill(1).every((value, index) => value === check(h)[index])) {
+      finish(true);
+      return;
+    } else if(g[5].length > 0 && g[5].every((value) => value !== 1)) {
+      finish(false);
+      return;
+    }
+    h++;
+  } else {
+    if(![].concat.apply([], keys.low).includes(e.key) && ![].concat.apply([], keys.up).includes(e.key)) return;
+
+    if(g[h].length === b&&e.key!="̃") return;
+    if(e.key=="̃")
+    g[h][g[h].length-1]+=e.key
+    else g[h].push(e.key)
+    renderGr();
+  }
+})
+
 function finish(aaa) {
+  fnish = true;
   Object.values(document.querySelector('#kb').children).forEach((v, i) => {
     v.style.transition = `opacity .4s ${i/10}s`
     v.style.opacity = 0;
@@ -117,6 +147,7 @@ function finish(aaa) {
     const d = document.createElement('button');
     d.innerText = 'nnōrvāti myārchikrīnglā?';
     d.addEventListener('click', () => {
+      fnish = false;
       g = [
         [],
         [],
