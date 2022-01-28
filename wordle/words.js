@@ -32,8 +32,9 @@ const wordlist = [
   "pirike",//to seperate, to open (a plastic package)
   "vedike",//to explode
   "kāpāth",//help, save, rescue
-  "valake",//to grow (something/someone), to brush (teeth)
+  "valake",//to grow/raise (something/someone), to brush (teeth)
   "valare",//(for someone/something) to grow
   "parave",//bird
   "maraōd"//tree bark
-].map(e => e.replace(/õ/g, "õ"))
+].map(e => e.replace(/õ/g, "o"+"̃").replace(/~/,"̃"))
+
