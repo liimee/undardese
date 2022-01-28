@@ -78,7 +78,8 @@ svg {
 }
 
 .les:active {
-  transform: scale(.9);
+  transform: scale(.95);
+  box-shadow: none;
 }
 
 .chl {
@@ -86,7 +87,8 @@ svg {
   scroll-snap-type: y mandatory;
   height:200px;
   overflow: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  padding: 1em;
 }
 
 .les {
@@ -94,13 +96,14 @@ svg {
   padding: 1em;
   background-color: #fff;
   display: block;
-  transition: transform .2s;
+  transition: transform .2s, box-shadow .4s;
   position: relative;
-  scroll-snap-align: start
+  scroll-snap-align: start;
+  box-shadow: .5em .5em .5em grey;
 }
 
 .les+.les {
-  margin-top: .5em;
+  margin-top: 1em;
 }
 
 .les>div:first-child {
