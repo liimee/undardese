@@ -33,6 +33,11 @@ let g = [
   []
 ]
 
+let chars = {
+  y: [],
+  g: []
+}
+
 let keys = {};
 keys.low = ["wertyuiop", "asdfghjkl", "æœcvbnm", "⇪̃⌫"].map((e) => e.split``);
 keys.up = ["qwērtyūīōp", "āsdfghjkł", "zxcvb̃m", "↥⌫"].map((e) => e.split``);
@@ -51,6 +56,8 @@ function makeKeys(layout = "low") {
       let cel = document.createElement("span");
       cel.classList.add("key");
       cel.innerText = ch;
+      if(chars.g.includes(ch)) cel.style.backgroundColor = 'rgb(21, 128, 61)';
+      if(chars.y.includes(ch)) cel.style.backgroundColor = 'rgb(202, 138, 4)';
       el.appendChild(cel);
       if (ch == "⌫") {
         cel.onclick = () => {
@@ -179,14 +186,29 @@ function finish(aaa) {
 }
 
 function bg(f) {
+  const e = {};
   g.forEach((_, s) => {
     if (!f || (f && s < h)) {
       check(s).forEach((v, i) => {
         if (s === h) document.querySelector('#gr').children[(s * a) + i].style.transition = `background-color .4s ${i / 10}s`
-        document.querySelector('#gr').children[(s * a) + i].style.backgroundColor = v === 3 ? 'rgba(255, 255, 255, 0.5)' : v === 2 ? 'rgb(202, 138, 4)' : 'rgb(21, 128, 61)'
+        document.querySelector('#gr').children[(s * a) + i].style.backgroundColor = v === 3 ? 'rgba(255, 255, 255, 0.5)' : v === 2 ? 'rgb(202, 138, 4)' : 'rgb(21, 128, 61)';
+        if((e[g[s][i]]||0) < v) e[g[s][i]] = v;
       })
     }
   })
+  Object.keys(e).forEach(v => {
+    if(e[v] === 1) {
+      if(!chars.g.includes(v)) {
+        chars.g.push(v)
+      }
+    } else if(e[v] === 2) {
+      if(!chars.y.includes(v)) {
+        chars.y.push(v)
+      }
+    }
+  })
+  document.querySelector('#kb').innerHTML = '';
+  makeKeys();
 }
 
 function check(h) {
