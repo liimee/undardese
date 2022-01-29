@@ -56,8 +56,8 @@ function makeKeys(layout = "low") {
       let cel = document.createElement("span");
       cel.classList.add("key");
       cel.innerText = ch;
-      if(chars.g.includes(ch)) cel.style.backgroundColor = 'rgb(21, 128, 61)';
       if(chars.y.includes(ch)) cel.style.backgroundColor = 'rgb(202, 138, 4)';
+      if(chars.g.includes(ch)) cel.style.backgroundColor = 'rgb(21, 128, 61)';
       el.appendChild(cel);
       if (ch == "⌫") {
         cel.onclick = () => {
@@ -105,6 +105,8 @@ function enter() {
     finish(false);
     return;
   }
+  document.querySelector('#kb').innerHTML = '';
+  makeKeys()
   h++;
 }
 
@@ -157,6 +159,10 @@ function finish(aaa) {
         [],
         []
       ];
+      chars = {
+        y: [],
+        g: []
+      }
       h = 0;
       word = wordlist[Math.floor(Math.random() * wordlist.length)];
       renderGr();
@@ -189,16 +195,19 @@ function bg(f) {
   const e = {};
   g.forEach((_, s) => {
     if (!f || (f && s < h)) {
+      const f = {};
       check(s).forEach((v, i) => {
         if (s === h) document.querySelector('#gr').children[(s * a) + i].style.transition = `background-color .4s ${i / 10}s`
         document.querySelector('#gr').children[(s * a) + i].style.backgroundColor = v === 3 ? 'rgba(255, 255, 255, 0.5)' : v === 2 ? 'rgb(202, 138, 4)' : 'rgb(21, 128, 61)';
-        if((e[g[s][i]]||0) < v) e[g[s][i]] = v;
+        f[g[s][i]] = (f[g[s][i]]||0)+1;
+        if((e[g[s][i]]||0) < v && find(g[s][i]).length >= f[g[s][i]] && s === h) e[g[s][i]] = v;
       })
     }
   })
   Object.keys(e).forEach(v => {
     if(e[v] === 1) {
       if(!chars.g.includes(v)) {
+        if(chars.y.indexOf(v) != -1) chars.y.splice(chars.y.indexOf(v), 1)
         chars.g.push(v)
       }
     } else if(e[v] === 2) {
@@ -207,8 +216,6 @@ function bg(f) {
       }
     }
   })
-  document.querySelector('#kb').innerHTML = '';
-  makeKeys();
 }
 
 function check(h) {
