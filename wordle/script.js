@@ -83,7 +83,7 @@ function makeKeys(layout = "low") {
 
 function enter() {
   if (g[h].length !== b) {
-    err('Not enough letters'); //translate this
+    err('ełthnge pathādh');
     return;
   };
   if (!wordlist.includes(g[h].join(''))) {
