@@ -14,7 +14,7 @@ body {
   background-color: rgb(17, 24, 39);
   color: #fff;
   text-align: center;
-  font-family: system-ui,sans-serif;
+  font-family: -apple-system, 'Inter', Arial, sans-serif;
 }
 
 #gr {
