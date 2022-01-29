@@ -100,6 +100,7 @@ function enter() {
 }
 
 window.addEventListener('keydown', e => {
+  if(fnish) return;
   if (e.key === 'Backspace') {
     g[h].pop();
     renderGr();
@@ -107,7 +108,6 @@ window.addEventListener('keydown', e => {
     enter()
   } else {
     if (![].concat.apply([], keys.low).includes(e.key) && ![].concat.apply([], keys.up).includes(e.key)) return;
-
     if (g[h].length === b && e.key != "̃") return;
     if (e.key == "̃")
     g[h][g[h].length - 1] += e.key
