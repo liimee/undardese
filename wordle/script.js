@@ -82,10 +82,12 @@ function makeKeys(layout = "low") {
 }
 
 function enter() {
-  if (g[h].length !== b) return;
+  if (g[h].length !== b) {
+    err('Not enough letters'); //translate this
+    return;
+  };
   if (!wordlist.includes(g[h].join(''))) {
-    document.querySelector('#er').style.opacity = '1';
-    setTimeout(() => document.querySelector('#er').style.opacity = '0', 2000);
+    err('avārthe patyallelle');
     return;
   }
   bg(false)
@@ -224,6 +226,12 @@ function find(w) {
     startIndex = index + w.length;
   }
   return i;
+}
+
+function err(t) {
+  document.querySelector('#er').innerText = t;
+  document.querySelector('#er').style.opacity = '1';
+  setTimeout(() => document.querySelector('#er').style.opacity = '0', 2000);
 }
 
 makeKeys()
