@@ -10,6 +10,24 @@
   }
 }
 
+@keyframes v {
+  20% {
+    transform: translateX(.5em);
+  }
+  40% {
+    transform: translateX(-.5em);
+  }
+  60% {
+    transform: translateX(.5em);
+  }
+  80% {
+    transform: translateX(-.5em);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 body {
   background-color: rgb(17, 24, 39);
   color: #fff;

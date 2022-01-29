@@ -88,13 +88,24 @@ function makeKeys(layout = "low") {
   });
 }
 
+function vib() {
+  Object.values(document.querySelector('#gr').children).forEach((v, i) => {
+    if(Math.floor(i/b) === h) {
+      v.style.animation = 'v .4s';
+      setTimeout(() => v.style.animation = 'none', 400)
+    }
+  })
+}
+
 function enter() {
   if (g[h].length !== b) {
     err('ełthnge pathādh');
+    vib();
     return;
   };
   if (!wordlist.includes(g[h].join(''))) {
     err('avārthe patyallelle');
+    vib();
     return;
   }
   bg(false)
