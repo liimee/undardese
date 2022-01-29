@@ -13,6 +13,7 @@ function renderGr() {
     for (let d = 0; d < b; d++) {
       const f = document.createElement('span');
       f.className = 'g';
+      if(d === g[h].length-1 && c === h) f.style.animation = 's .25s';
       const i = document.createElement('span');
       i.innerText = g[c][d] || '';
       i.style.verticalAlign = 'middle';
