@@ -107,7 +107,7 @@ function renderC() {
     s.appendChild(t)
     const x = document.createElement('div');
     //feel free to change the maths, I'm not good at it hehehhe
-    x.innerText = `should take ~${Math.round(data[v].length*Number(localStorage.getItem('t'))/60)} minutes, based on my awful calculations`;
+    x.innerText = `Definitely takes ~${Math.round(data[v].length*Number(localStorage.getItem('t'))/60)} minutes`;
     x.style.maxWidth = '80%';
     s.appendChild(x);
     const u = document.createElement('div');
