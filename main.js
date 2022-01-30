@@ -91,21 +91,25 @@ var data = {
     basics1: ['Basics 1', 'far fa-sun', 1],
     basics2: ['Basics 2', 'fas fa-walking', 1],
     basics3: ['Basics 3', 'fas fa-users', 1],
-    _sections:1
+    _sections: 1
   }
 }
 
 var f = {};
 
 function renderC() {
-	
-  document.querySelector('#cp').innerHTML = `<div class="choose">
-        <div><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg> <span class=sectionname></span></div>
-        <div class="chl"></div>
-      </div>`.repeat(data.data._sections);
-    document.querySelectorAll("span.sectionname").forEach((e,ind)=>e.innerText="Section "+(1+ind))
+  for(let s = 0; s<data._sections-1; s++) {
+    const g = document.createElement('h1');
+    g.innerText="Section "+(s+1)
+    const f = document.createElement('div');
+    f.className = 'choose';
+    const l = document.createElement('div');
+    l.className = 'chl';
+    f.appendChild(l);
+
+    document.querySelector('#cp').appendChild(g);
+    document.querySelector('#cp').appendChild(f);
+  }
   Object.keys(data.data).forEach(v => {
   	if(v.startsWith("_"))return
     const s = document.createElement('span');
@@ -115,7 +119,6 @@ function renderC() {
     t.innerText = data.data[v][0];
     s.appendChild(t)
     const x = document.createElement('div');
-    //feel free to change the maths, I'm not good at it hehehhe
     x.innerText = `Definitely takes ~${Math.round(data[v].length*Number(localStorage.getItem('t'))/60)} minutes`;
     x.style.maxWidth = '80%';
     s.appendChild(x);

@@ -111,6 +111,10 @@ svg {
   margin: 0 1em;
 }
 
+.les>div:first-child {
+  font-weight: bold;
+}
+
 .les>div:last-child {
   position: absolute;
   top: 1em;
