@@ -88,17 +88,26 @@ var data = {
     ]
   ],
   data: {
-    basics1: ['Basics 1', 'far fa-sun'],
-    basics2: ['Basics 2', 'fas fa-walking'],
-    basics3: ['Basics 3', 'fas fa-users']
+    basics1: ['Basics 1', 'far fa-sun', 1],
+    basics2: ['Basics 2', 'fas fa-walking', 1],
+    basics3: ['Basics 3', 'fas fa-users', 1],
+    _sections:1
   }
 }
 
 var f = {};
 
 function renderC() {
-  document.querySelector('.chl').innerHTML = '';
+	
+  document.querySelector('#cp').innerHTML = `<div class="choose">
+        <div><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg> <span class=sectionname></span></div>
+        <div class="chl"></div>
+      </div>`.repeat(data.data._sections);
+    document.querySelectorAll("span.sectionname").forEach((e,ind)=>e.innerText="Section "+(1+ind))
   Object.keys(data.data).forEach(v => {
+  	if(v.startsWith("_"))return
     const s = document.createElement('span');
     s.className = 'les';
     s.addEventListener('click', () => course(data[v]))
@@ -115,7 +124,7 @@ function renderC() {
     const w = document.createElement('i');
     w.className = data.data[v][1];
     u.appendChild(w)
-    document.querySelector('.chl').appendChild(s);
+    document.querySelectorAll('.chl')[data.data[v][2]-1].appendChild(s);
   })
 }
 
