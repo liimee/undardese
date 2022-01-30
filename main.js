@@ -234,7 +234,7 @@ function exit() {
 
 async function info(object) {
   var v = object.thing[object.name];
-  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}${v.tip?'<br>Tip: '+v.tip:''}</div></div>`;
+  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div>${v.tip?`<br><span class="tip">Tip: ${v.tip}</span>`:''}</div>`;
   await addOkBtn();
   object.thing[object.name].score++;
   doThing(object.thing);
