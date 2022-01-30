@@ -98,6 +98,7 @@ var data = {
 var f = {};
 
 function renderC() {
+  document.querySelector('#cp').innerHTML = '';
   for(let s = 0; s<data.data._sections; s++) {
     const g = document.createElement('h1');
     g.innerText="Section "+(s+1)
