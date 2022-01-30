@@ -1,6 +1,6 @@
 if(!localStorage.getItem('t')) localStorage.setItem('t', 5)
 
-var data = {
+const data = {
   basics1: [
     [
       'far fa-hand-point-down noun',
@@ -87,11 +87,17 @@ var data = {
       'small'
     ]
   ],
+  sentences1:[
+  	[
+  		'fas fa-frown', 'word', 'meaning', 'tip'
+  	]
+  ],
   data: {
+  	_sections: 2,
     basics1: ['Basics 1', 'far fa-sun', 1],
     basics2: ['Basics 2', 'fas fa-walking', 1],
     basics3: ['Basics 3', 'fas fa-users', 1],
-    _sections: 1
+    sentences1: ['Sentences 1', 'fas fa-icons',2]
   }
 }
 
@@ -147,6 +153,7 @@ function course(obj) {
     things[v[1]] = {
       meaning: v[2],
       icon: v[0],
+      tip: v[3],
       score: 0
     }
   });
@@ -227,7 +234,7 @@ function exit() {
 
 async function info(object) {
   var v = object.thing[object.name];
-  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div></div>`;
+  document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}${v.tip?'<br>Tip: '+v.tip:''}</div></div>`;
   await addOkBtn();
   object.thing[object.name].score++;
   doThing(object.thing);
