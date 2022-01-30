@@ -98,7 +98,7 @@ var data = {
 var f = {};
 
 function renderC() {
-  for(let s = 0; s<data._sections-1; s++) {
+  for(let s = 0; s<data.data._sections; s++) {
     const g = document.createElement('h1');
     g.innerText="Section "+(s+1)
     const f = document.createElement('div');
