@@ -65,7 +65,7 @@ svg {
 #cp {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 3fr;
   row-gap: 1.5em;
 }
 
@@ -78,8 +78,8 @@ svg {
   padding: 10px;
   border-radius: 8px;
   background-color: #c6c6c6;
-  width: 100%;
-  max-width: 300px;
+  width: 90%;
+  max-width: 80vw;
   user-select: none;
   -webkit-user-select: none;
   box-shadow: .5em .5em .5em grey;
@@ -106,21 +106,12 @@ svg {
   transition: transform .2s, box-shadow .4s;
   position: relative;
   scroll-snap-align: start;
+  width: 300px;
   box-shadow: .5em .5em .5em grey;
 }
 
 .les+.les {
-  margin-top: 1em;
-}
-
-.les>div:first-child {
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-.les svg {
-  width: 31px;
-  height: 31px;
+  margin: 0 1em;
 }
 
 .les>div:last-child {
@@ -246,7 +237,6 @@ button {
   }
   .les{
   	display: inline-block;
-  	width: 100%;
   	height: 100px;
   	margin: none
   }
@@ -262,7 +252,7 @@ button {
 @media (max-width: 690px) {
   #cp {
     justify-content: initial;
-    grid-template-columns: repeat(1, calc(100% - 1.5em));
+    grid-template-columns: calc(100% - 1.5em);
     row-gap: 0;
   }
 
@@ -274,6 +264,11 @@ button {
   .choose {
     max-width: none;
     width: 100%;
+  }
+
+  .les {
+    margin: 1em 0 !important;
+    width: calc(100% - 2em);
   }
 }
 
