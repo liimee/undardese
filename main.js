@@ -359,7 +359,7 @@ function askQuestion2(a, c, d) {
       ed.c.style.transform = 'scale(0)';
       ed.c.style.animation = 'zo .5s';
       setTimeout(() => {
-        if(!d) ys.play(); else ns.play();
+        if(d) ns.play(); else ys.play();
         document.querySelector('#stuff').innerHTML = (d) ? '<i class="fas fa-times-circle"></i>' : '<i class="fas fa-check-circle"></i>';
         document.querySelector('#stuff').style.transform = 'scale(1)';
         document.querySelector('#stuff').style.animation = 'zi .5s';
@@ -382,6 +382,7 @@ function askQuestion2(a, c, d) {
       ed.c.style.transform = 'scale(0)';
       ed.c.style.animation = 'zo .5s';
       setTimeout(() => {
+        if(!d) ns.play(); else ys.play();
         document.querySelector('#stuff').innerHTML = (!d) ? '<i class="fas fa-times-circle"></i>' : '<i class="fas fa-check-circle"></i>';
         document.querySelector('#stuff').style.transform = 'scale(1)';
         document.querySelector('#stuff').style.animation = 'zi .5s';
