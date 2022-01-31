@@ -97,7 +97,7 @@ const data = {
   ],
   sentences1:[
     [
-      'fas fa-frown', 'word', 'meaning', 'tip'
+      'word','fas fa-frown', 'word', 'meaning', 'tip'
     ]
   ],
   data: {
@@ -105,7 +105,7 @@ const data = {
     basics1: ['Basics 1', 'far fa-sun', 1],
     basics2: ['Basics 2', 'fas fa-walking', 1],
     basics3: ['Basics 3', 'fas fa-users', 1],
-    sentences1: ['Sentences 1', 'fas fa-icons',2]
+    sentences1: ['Sentences 1', 'fas fa-icons',2,true]
   }
 }
 
@@ -129,7 +129,11 @@ function renderC() {
     if(v.startsWith("_"))return
     const s = document.createElement('span');
     s.className = 'les';
-    s.addEventListener('click', () => course(data[v]))
+    if(!data.data[v][3]){
+    	s.addEventListener('click', () => course(data[v]))
+    }else{
+    	s.addEventListener('click', ()=>linearCourse(data[v]))
+    }
     const t = document.createElement('div')
     t.innerText = data.data[v][0];
     s.appendChild(t)
@@ -240,12 +244,12 @@ function exit() {
   }, 400);
 }
 
-async function info(object) {
+async function info(object, cont) {
   var v = object.thing[object.name];
   document.querySelector('#content').innerHTML = `<div id="stuff" style="animation: zi .5s"><i class="${v.icon}"></i><div><b>${object.name}</b></div><div class="meaning">${v.meaning}</div>${v.tip?`<br><span class="tip">Tip: ${v.tip}</span>`:''}</div>`;
   await addOkBtn();
   object.thing[object.name].score++;
-  doThing(object.thing);
+  if(!cont)doThing(object.thing);
 }
 
 function addOkBtn() {
@@ -410,6 +414,29 @@ function askQuestion2(a, c, d) {
     document.querySelector('#content').appendChild(ed.c);
     document.querySelector('#stuff').style.animation = 'zi .5s';
   })
+}
+
+async function linearCourse(qs){
+	 document.querySelector('#par').style.display = 'block';
+	 setTimeout(() => {
+	 	document.querySelector('#mainwin').style.left = 0;
+	 }, 50);
+	let ind=0;
+	(function step(q=qs[ind]){
+		if(q[0]=="word"){
+			let obj={
+				thing:{
+					
+				},
+				name:q[2],
+				icon:q[1]
+			}
+			obj.thing[q[2]]={meaning:q[3],tip:q[4]}
+			info(obj,true)
+		}
+		console.log(ind)
+		if((ind+1)<qs.length){ind++;step()}
+	})()
 }
 
 renderC();
