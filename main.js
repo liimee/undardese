@@ -1,5 +1,13 @@
 if(!localStorage.getItem('t')) localStorage.setItem('t', 5)
 
+const ys = new Howl({
+  src: ['s/y.wav']
+});
+
+const ns = new Howl({
+  src: ['s/n.wav']
+});
+
 const data = {
   basics1: [
     [
@@ -88,12 +96,12 @@ const data = {
     ]
   ],
   sentences1:[
-  	[
-  		'fas fa-frown', 'word', 'meaning', 'tip'
-  	]
+    [
+      'fas fa-frown', 'word', 'meaning', 'tip'
+    ]
   ],
   data: {
-  	_sections: 2,
+    _sections: 2,
     basics1: ['Basics 1', 'far fa-sun', 1],
     basics2: ['Basics 2', 'fas fa-walking', 1],
     basics3: ['Basics 3', 'fas fa-users', 1],
@@ -118,7 +126,7 @@ function renderC() {
     document.querySelector('#cp').appendChild(f);
   }
   Object.keys(data.data).forEach(v => {
-  	if(v.startsWith("_"))return
+    if(v.startsWith("_"))return
     const s = document.createElement('span');
     s.className = 'les';
     s.addEventListener('click', () => course(data[v]))
@@ -287,6 +295,7 @@ function askQuestion(a) {
         document.querySelector('#stuff').style.animation = 'zo .5s';
         f.style.animation = 'zo .5s';
         setTimeout(() => {
+          if(v.correct) ys.play(); else ns.play();
           document.querySelector('#stuff').innerHTML = v.correct ? '<i style="font-size: 1.9em" class="fas fa-check-circle"></i>' : '<i style="font-size: 1.9em" class="fas fa-times-circle"></i>';
           document.querySelector('#stuff').style.transform = 'scale(1)';
           document.querySelector('#stuff').style.animation = 'zi .5s';
@@ -350,6 +359,7 @@ function askQuestion2(a, c, d) {
       ed.c.style.transform = 'scale(0)';
       ed.c.style.animation = 'zo .5s';
       setTimeout(() => {
+        if(!d) ys.play(); else ns.play();
         document.querySelector('#stuff').innerHTML = (d) ? '<i class="fas fa-times-circle"></i>' : '<i class="fas fa-check-circle"></i>';
         document.querySelector('#stuff').style.transform = 'scale(1)';
         document.querySelector('#stuff').style.animation = 'zi .5s';
