@@ -96,11 +96,11 @@ const data = {
     ]
   ],
   sentences1:[
-    [
-      'word','fas fa-plus', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ). It also removes any œ sound at the end of a word (dhœ + õ = dhõ).'
+    [//todo split obnoxiously large tip into smaller sections
+      'word','fas fa-add', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ). It also removes any œ sound at the end of a word (dhœ + õ = dhõ).'
     ],
     [
-    	'sent','this and that', ["dhõ adhõ"], ["dh","adh","œ","õ"]
+    	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"]
     ]
   ],
   data: {
@@ -227,7 +227,6 @@ async function doThing(obj) {
       clearInterval(y);
       document.querySelector('#content').innerText = 'We\'re done!';
       document.querySelector('#content').style.animation = 'zi .5s';
-      console.log(f.b)
       localStorage.setItem('t', f.b.reduce((a, b) => a + b, 0) / f.b.length)
       renderC();
       confetti({
@@ -437,6 +436,7 @@ function linearCourse(qs){
 			obj.thing[q[2]]={meaning:q[3],tip:q[4]};
 			await info(obj,1)
 		}else if(q[0]=="sent"){
+			await new Promise(res=>{
 			let el=[
 				document.createElement("div"),//Sentence label
 				document.createElement("div"),//Current answer
@@ -470,8 +470,14 @@ function linearCourse(qs){
 						btn.innerText="Continue"
 						btn.style.animation="zi .5s"
 						btn.style.transform="scale(1)"
+						var corr=document.createElement("i")
+						corr.className="fas fa-check-circle"
+						corr.style="font-size:1.5em; margin-top: 20px"
+						document.getElementById("stuff").appendChild(corr,btn)
 						btn.onclick=()=>{
-							
+							document.getElementById("content").style.animation="zo .5s"
+							document.getElementById("content").style.transform="scale(0)"
+							setTimeout(()=>{document.getElementById("content").style.transform="scale(1)";res()},600)
 						}
 					},600)
 				}else{
@@ -484,8 +490,18 @@ function linearCourse(qs){
 			setInterval(()=>document.getElementById("stuff").style.transform="scale(1)",501)
 			el.forEach(e=>document.getElementById("stuff").appendChild(e))
 			document.getElementById("content").appendChild(btn)
+			})
 		}
-		if((ind+1)<qs.length){ind++;step()}
+		if((ind+1)<qs.length){ind++;step()}else{
+			document.querySelector('#content').innerText = 'We\'re done!';
+			document.querySelector('#content').style.animation = 'zi .5s';
+			renderC();
+			confetti({
+				particleCount: 100,
+				spread: 70,
+				origin: { y: 0.6 }
+			});
+		}
 	})()
 }
 
