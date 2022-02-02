@@ -44,7 +44,7 @@ const data = {
     ],
     [
       'fas fa-utensils',
-      'sapd',
+      'sāpd',
       'eat'
     ],
     [
@@ -97,10 +97,10 @@ const data = {
   ],
   sentences1:[
     [//todo split obnoxiously large tip into smaller sections
-      'word','fas fa-add', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ). It also removes any œ sound at the end of a word (dhœ + õ = dhõ).'
+      'word','fas fa-add', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ).'
     ],
     [
-    	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"]
+    	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"], "The 'õ' suffix removes any œ sound at the end of a word (dhœ + õ = dhõ)."
     ]
   ],
   data: {
@@ -440,8 +440,8 @@ function linearCourse(qs){
 			let el=[
 				document.createElement("div"),//Sentence label
 				document.createElement("div"),//Current answer
-				document.createElement("div"),//Word choices
-			],
+				document.createElement("div")//Word choices
+			]
 			btn=document.createElement("button")
 			el[0].innerText=q[1]
 			btn.className="okbtn"
@@ -458,12 +458,12 @@ function linearCourse(qs){
 					eel.className = "choice"
 					eel.innerText = e
 					eel.onclick=e=>e.target.remove()
-					el[1].appendChild(eel)
+					document.querySelector(".ans").appendChild(eel)
 				}
 			})
 			
 			btn.onclick=()=>{
-				if(validate(el[1], q[2])){
+				if(validate(document.querySelector(".ans"), q[2])){
 					btn.style.animation="zo .5s"
 					btn.style.transform="scale(0)"
 					setTimeout(()=>{
@@ -472,8 +472,9 @@ function linearCourse(qs){
 						btn.style.transform="scale(1)"
 						var corr=document.createElement("i")
 						corr.className="fas fa-check-circle"
-						corr.style="font-size:1.5em; margin-top: 20px"
+						corr.style="font-size:1.5em; margin-top: 20px; animation: zi .5s"
 						document.getElementById("stuff").appendChild(corr,btn)
+						ys.play()
 						btn.onclick=()=>{
 							document.getElementById("content").style.animation="zo .5s"
 							document.getElementById("content").style.transform="scale(0)"
@@ -488,6 +489,11 @@ function linearCourse(qs){
 			document.getElementById("stuff").innerHTML=''
 			document.getElementById("stuff").style.animation='zi .5s'
 			setInterval(()=>document.getElementById("stuff").style.transform="scale(1)",501)
+			if (q[4]) {
+				el.splice(1, 0, document.createElement("div"))
+				el[1].className = "tip"
+				el[1].innerText = "Tip: " + q[4]
+			}
 			el.forEach(e=>document.getElementById("stuff").appendChild(e))
 			document.getElementById("content").appendChild(btn)
 			})

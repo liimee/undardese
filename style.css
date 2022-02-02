@@ -283,7 +283,8 @@ button {
 	border:2px solid rgb(160,160,0);
 	padding: 5px;
 	border-radius: 5px;
-	display: inline-block
+	display: inline-block;
+	font-size: 13px !important
 }
 
 .choice{
