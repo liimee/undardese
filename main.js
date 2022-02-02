@@ -71,7 +71,7 @@ const data = {
     ],
     [
       'fas fa-user-circle',
-      'nā',
+      'nã',
       'me'
     ],
     [
@@ -97,7 +97,10 @@ const data = {
   ],
   sentences1:[
     [
-      'word','fas fa-frown', 'word', 'meaning', 'tip'
+      'word','fas fa-plus', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ). It also removes any œ sound at the end of a word (dhœ + õ = dhõ).'
+    ],
+    [
+    	'sent','this and that', ["dhõ adhõ"], ["dh","adh","œ","õ"]
     ]
   ],
   data: {
@@ -416,13 +419,13 @@ function askQuestion2(a, c, d) {
   })
 }
 
-async function linearCourse(qs){
+function linearCourse(qs){
 	 document.querySelector('#par').style.display = 'block';
 	 setTimeout(() => {
 	 	document.querySelector('#mainwin').style.left = 0;
 	 }, 50);
 	let ind=0;
-	(function step(q=qs[ind]){
+	(async function step(q=qs[ind]){
 		if(q[0]=="word"){
 			let obj={
 				thing:{
@@ -431,12 +434,63 @@ async function linearCourse(qs){
 				name:q[2],
 				icon:q[1]
 			}
-			obj.thing[q[2]]={meaning:q[3],tip:q[4]}
-			info(obj,true)
+			obj.thing[q[2]]={meaning:q[3],tip:q[4]};
+			await info(obj,1)
+		}else if(q[0]=="sent"){
+			let el=[
+				document.createElement("div"),//Sentence label
+				document.createElement("div"),//Current answer
+				document.createElement("div"),//Word choices
+			],
+			btn=document.createElement("button")
+			el[0].innerText=q[1]
+			btn.className="okbtn"
+			btn.innerText="Check"
+			el[1].className="ans"
+			el[1].id="ans"
+			q[3].forEach(e=>{
+				let wrd=document.createElement("span")
+				wrd.className="choice"
+				wrd.innerText=e
+				el[2].appendChild(wrd)
+				wrd.onclick=(ev)=>{
+					let eel=document.createElement("span")
+					eel.className = "choice"
+					eel.innerText = e
+					eel.onclick=e=>e.target.remove()
+					el[1].appendChild(eel)
+				}
+			})
+			
+			btn.onclick=()=>{
+				if(validate(el[1], q[2])){
+					btn.style.animation="zo .5s"
+					btn.style.transform="scale(0)"
+					setTimeout(()=>{
+						btn.innerText="Continue"
+						btn.style.animation="zi .5s"
+						btn.style.transform="scale(1)"
+						btn.onclick=()=>{
+							
+						}
+					},600)
+				}else{
+					
+				}
+			}
+			
+			document.getElementById("stuff").innerHTML=''
+			document.getElementById("stuff").style.animation='zi .5s'
+			setInterval(()=>document.getElementById("stuff").style.transform="scale(1)",501)
+			el.forEach(e=>document.getElementById("stuff").appendChild(e))
+			document.getElementById("content").appendChild(btn)
 		}
-		console.log(ind)
 		if((ind+1)<qs.length){ind++;step()}
 	})()
+}
+
+function validate(el, arr){
+	return arr.map(e=>e.replace(/[ ]/g,"")).includes(Array.from(el.childNodes).map(e=>e.innerText).join``)
 }
 
 renderC();
