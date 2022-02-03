@@ -318,6 +318,7 @@ function askQuestion2(a, c, d) {
 }
 
 function linearCourse(qs) {
+    le = true;
     document.querySelector('#par').style.display = 'block';
     setTimeout(() => {
         document.querySelector('#mainwin').style.left = 0;
@@ -405,6 +406,7 @@ function linearCourse(qs) {
             document.querySelector('#content').innerText = 'We\'re done!';
             document.querySelector('#content').style.animation = 'zi .5s';
             renderC();
+            le = false;
             confetti({
                 particleCount: 100,
                 spread: 70,
