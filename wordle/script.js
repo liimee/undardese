@@ -156,7 +156,7 @@ function finish(aaa) {
     b.innerText = aaa ? 'vāłthnge!' : 'aīo!'; //translate these
 
     const c = document.createElement('p');
-    c.innerText = aaa ? 'vārthekandpudipe mudchtīnge!' : 'nīng ivāti thōthtīnge!';//the last line needs to be a reset button (but same word still)
+    c.innerText = aaa ? 'vārthele mudchtīnge!' : 'nīng ivāti thōthtīnge!';//the last line needs to be a reset button (but same word still)
 
     const d = document.createElement('button');
     d.innerText = 'nnōrvāti myārchikrīnglā?';
