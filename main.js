@@ -336,10 +336,10 @@ function linearCourse(qs) {
         } else if (q[0] == "sent") {
             await new Promise(res => {
                 let el = [
-				document.createElement("div"), //Sentence label
-				document.createElement("div"), //Current answer
-				document.createElement("div") //Word choices
-			]
+				    document.createElement("div"), //Sentence label
+				    document.createElement("div"), //Current answer
+				    document.createElement("div") //Word choices
+	            ]
                 btn = document.createElement("button")
                 el[0].innerText = q[1]
                 btn.className = "okbtn"
@@ -383,11 +383,36 @@ function linearCourse(qs) {
                             }
                         }, 600)
                     } else {
-
+                        btn.style.animation = "zo .5s"
+                        btn.style.transform = "scale(0)"
+                        setTimeout(() => {
+                            btn.innerText = "Continue"
+                            btn.style.animation = "zi .5s"
+                            btn.style.transform = "scale(1)"
+                            var corr = document.createElement("i")
+                            corr.className = "fas fa-times-circle"
+                            corr.style = "font-size:1.5em; margin-top: 20px; animation: zi .5s"
+                            var ans=document.createElement("p")
+                            ans.innerText="Correct answer: "+q[2][0]
+                            document.getElementById("stuff").appendChild(corr)
+                            document.getElementById("stuff").appendChild(ans)
+                            ns.play()
+                            qs.push(q)
+                            btn.onclick = () => {
+                                document.getElementById("content").style.animation = "zo .5s"
+                                document.getElementById("content").style.transform = "scale(0)"
+                                setTimeout(() => {
+                                    document.getElementById("content").style.animation = "zi .5s"
+                                    document.getElementById("content").style.transform = "scale(1)";
+                                    res()
+                                }, 600)
+                            }
+                        }, 600)
                     }
                 }
 
                 document.getElementById("stuff").innerHTML = ''
+                document.querySelectorAll(".okbtn").forEach(e=>e.remove())
                 document.getElementById("stuff").style.animation = 'zi .5s'
                 setInterval(() => document.getElementById("stuff").style.transform = "scale(1)", 501)
                 if (q[4]) {
