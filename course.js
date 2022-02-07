@@ -87,10 +87,13 @@ const data = {
   ],
   sentences1:[
     [//todo split obnoxiously large tip into smaller sections
-      'word','fas fa-add', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ).'
+      'word','fas fa-plus', '-õ', 'and, too, also', 'Use it after a word, like nī (you) -> nīõ (you too). This suffix makes nasal sounds (ã) become non-nasals followed by an ‘n’ (nã + õ = nānõ).'
     ],
     [
     	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"], "The 'õ' suffix removes any œ sound at the end of a word (dhœ + õ = dhõ)."
+    ],
+    [
+        'y/n', 'fas fa-plus', '-ã', 'and, too, also'
     ]
   ],
   data: {

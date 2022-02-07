@@ -328,10 +328,9 @@ function linearCourse(qs) {
         if (q[0] == "word") {
             let obj = {
                 thing: {},
-                name: q[2],
-                icon: q[1]
+                name: q[2]
             }
-            obj.thing[q[2]] = { meaning: q[3], tip: q[4] };
+            obj.thing[q[2]] = { meaning: q[3], tip: q[4], icon: q[1] };
             await info(obj, 1)
         } else if (q[0] == "sent") {
             await new Promise(res => {
