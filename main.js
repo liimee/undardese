@@ -242,6 +242,7 @@ function askQuestion2(a, c, d) {
         ed.a.className = 'corf';
         ed.b.id = 'stuff';
         ed.b.innerHTML = `<div><div style="font-size: 1.1em">${c}</div><div style="font-size: 0.6em"><i class="${a}"></i></div></div>`;
+        if(Array.isArray(c))ed.b.innerHTML = `<div><i class="${a}"></i><div style="font-size: 1.1em">${c[0]}</div><div style="font-size: 0.6em">${c[1]}</div></div>`;
         ed.a.appendChild(ed.b);
         let bt = {
             a: document.createElement('button'),
@@ -325,14 +326,14 @@ function linearCourse(qs) {
     }, 50);
     let ind = 0;
     (async function step(q = qs[ind]) {
-        if (q[0] == "word") {
+        if (q[0] == "word") { //word "question"
             let obj = {
                 thing: {},
                 name: q[2]
             }
             obj.thing[q[2]] = { meaning: q[3], tip: q[4], icon: q[1] };
             await info(obj, 1)
-        } else if (q[0] == "sent") {
+        } else if (q[0] == "sent") { //sentence
             await new Promise(res => {
                 let el = [
 				    document.createElement("div"), //Sentence label
@@ -409,11 +410,11 @@ function linearCourse(qs) {
                         }, 600)
                     }
                 }
-
+                if(!document.getElementById("stuff"))document.getElementById("content").innerHTML="<div id=stuff></div>"
                 document.getElementById("stuff").innerHTML = ''
                 document.querySelectorAll(".okbtn").forEach(e=>e.remove())
                 document.getElementById("stuff").style.animation = 'zi .5s'
-                setInterval(() => document.getElementById("stuff").style.transform = "scale(1)", 501)
+                setTimeout(() => document.getElementById("stuff").style.transform = "scale(1)", 501)
                 if (q[4]) {
                     el.splice(1, 0, document.createElement("div"))
                     el[1].className = "tip"
@@ -421,6 +422,13 @@ function linearCourse(qs) {
                 }
                 el.forEach(e => document.getElementById("stuff").appendChild(e))
                 document.getElementById("content").appendChild(btn)
+            })
+        }else if(q[0]=="y/n"){// yes or no
+            await new Promise(res=>{
+                askQuestion2("fas fa-icons", ['1','2'],true).then(h=>{
+                if(h-1)qs.push(q)
+                res()
+                })
             })
         }
         if ((ind + 1) < qs.length) {

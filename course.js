@@ -93,7 +93,7 @@ const data = {
     	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"], "The 'õ' suffix removes any œ sound at the end of a word (dhœ + õ = dhõ)."
     ],
     [
-        'y/n', 'fas fa-plus', '-ã', 'and, too, also'
+        'y/n', 'fas fa-plus', '-ã', 'and, too, also', false
     ]
   ],
   data: {
