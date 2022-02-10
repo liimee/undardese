@@ -94,6 +94,9 @@ const data = {
     ],
     [
         'y/n', 'fas fa-plus', '-ã', 'and, too, also', false
+    ],
+    [
+        'a/b', ["A","B"], 2
     ]
   ],
   data: {
