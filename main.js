@@ -433,7 +433,8 @@ function linearCourse(qs) {
         }else if(q[0]=="a/b"){
             await new Promise(async res=>{
                 if (!document.getElementById("stuff")) document.getElementById("content").innerHTML = "<div id=stuff></div>"
-                document.getElementById("stuff").innerHTML = ''
+                document.getElementById("stuff").innerHTML = `<i class="${q[3]}"></i><div>${q[4]}</div>`
+                document.getElementById("stuff").style.animation="zi .5s"
                 document.querySelectorAll("button.okbtn").forEach(e=>e.remove())
                 let arr=q[1].map((e,i)=>{
                     return{val:e,correct:q[2]==i+1}
