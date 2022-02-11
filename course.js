@@ -105,7 +105,7 @@ const data = {
         'sent','nīõ andhe nāiõ', ["you and that dog"], ["dog","me","see","that","you","and"]
     ],
     [
-        'y/n', 'fas fa-binocular', ''
+        'y/n', 'fas fa-binocular', ['pār','see'],true
     ]
   ],
   data: {
