@@ -93,10 +93,19 @@ const data = {
     	'sent','this and that', ["dhõ adhõ", "dhõ adhœ", "dhõ adh"], ["dh","adh","œ","õ"], "The 'õ' suffix removes any œ sound at the end of a word (dhœ + õ = dhõ)."
     ],
     [
-        'y/n', 'fas fa-plus', '-ã', 'and, too, also', false
+        'y/n', 'fas fa-plus', ['-ã', 'and, too, also'], false
     ],
     [
-        'a/b', ["A","B"], 2, 'fas fa-sun', 'Word'
+        'word', 'fas fa-dog', 'nāi/nāy', 'Dog'
+    ],
+    [
+        'a/b', ["adhõ","nāyõ"], 2, 'fas fa-sun', 'The dog too'
+    ],
+    [
+        'sent','nīõ andhe nāiõ', ["you and that dog"], ["dog","me","see","that","you","and"]
+    ],
+    [
+        'y/n', 'fas fa-binocular', ''
     ]
   ],
   data: {

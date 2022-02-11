@@ -157,7 +157,7 @@ function addOkBtn() {
         g.innerText = 'Oh!';
         g.onclick = () => {
             block();
-            document.querySelector('#stuff').style.transform = 'scale(0)';
+            document.querySelector('#stuff').style.transform = '';
             document.querySelector('#stuff').style.animation = 'zo .5s';
             g.style.animation = 'zo .5s';
             setTimeout(() => {
@@ -243,6 +243,7 @@ function askQuestion2(a, c, d) {
         ed.b.id = 'stuff';
         ed.b.innerHTML = `<div><div style="font-size: 1.1em">${c}</div><div style="font-size: 0.6em"><i class="${a}"></i></div></div>`;
         if(Array.isArray(c))ed.b.innerHTML = `<div><i class="${a}"></i><div style="font-size: 1.1em">${c[0]}</div><div style="font-size: 0.6em">${c[1]}</div></div>`;
+        setTimeout(()=>document.getElementById("stuff").style.transform="scale(1)",1000)
         ed.a.appendChild(ed.b);
         let bt = {
             a: document.createElement('button'),
@@ -426,8 +427,8 @@ function linearCourse(qs) {
         }else if(q[0]=="y/n"){// yes or no
             await new Promise(res=>{
                 askQuestion2(...q.slice(1)).then(h=>{
-                if(h-1)qs.push(q)
-                res()
+                    if(h-1)qs.push(q)
+                    res()
                 })
             })
         }else if(q[0]=="a/b"){
