@@ -425,7 +425,7 @@ function linearCourse(qs) {
             })
         }else if(q[0]=="y/n"){// yes or no
             await new Promise(res=>{
-                askQuestion2("fas fa-icons", ['1','2'],true).then(h=>{
+                askQuestion2(...q.slice(1)).then(h=>{
                 if(h-1)qs.push(q)
                 res()
                 })
