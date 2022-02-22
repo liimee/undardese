@@ -85,6 +85,12 @@ svg {
   box-shadow: .5em .5em .5em grey;
 }
 
+.les:hover,
+.les:focus {
+  transform: translateY(-10px);
+  box-shadow: calc(.5em + 10px) calc(.5em + 10px) .5em grey;
+}
+
 .les:active {
   transform: scale(.95);
   box-shadow: none;
