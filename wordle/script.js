@@ -131,7 +131,7 @@ function enter() {
 }
 
 window.addEventListener('keydown', e => {
-  if(fnish) return;
+  if(fnish || document.querySelector('#info').style.display === 'flex') return;
   if (e.key === 'Backspace') {
     g[h].pop();
     renderGr();
