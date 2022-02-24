@@ -47,11 +47,11 @@ let h = 0;
 
 var word = 'abcdef'
 var wordlist = []
-fetch('/wordle/word')
+fetch('./word')
   .then(v => v.text())
   .then(v => word = v.trim())
 
-fetch('/wordle/wordlist.json')
+fetch('./wordlist.json')
   .then(v => v.json())
   .then(v => wordlist = v)
 
