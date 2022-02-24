@@ -2,6 +2,8 @@ name: Deno
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '@daily'
 
 jobs:
   test:
