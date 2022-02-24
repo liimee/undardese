@@ -32,6 +32,9 @@ body {
   background-color: rgb(17, 24, 39);
   color: #fff;
   text-align: center;
+}
+
+* {
   font-family: -apple-system, 'Inter', Arial, sans-serif;
 }
 
@@ -97,4 +100,26 @@ button {
   display: block;
   opacity: 0;
   transition: opacity 0.25s
+}
+
+#info {
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#info > div {
+  width: 25%;
+  min-width: 310px;
+  max-width: 100%;
+  height: max-content;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: rgb(17, 24, 39);
 }

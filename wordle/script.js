@@ -252,5 +252,9 @@ function err(t) {
   setTimeout(() => document.querySelector('#er').style.opacity = '0', 2000);
 }
 
+function inf(b) {
+  document.querySelector('#info').style.display = b ? 'flex' : 'none';
+}
+
 makeKeys()
 renderGr();
