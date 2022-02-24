@@ -1,0 +1,33 @@
+name: Deno
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        # uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@004814556e37c54a2f6e31384c9e18e983317366
+        with:
+          deno-version: v1.x
+
+      - name: Random Word
+        run: |
+          deno run --allow-write wordle/getword.js
+          git config user.email "70614549+liimee@users.noreply.github.com"
+          git config user.name liimee
+          git add .
+          git commit -m "Update Word"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

@@ -85,3 +85,5 @@ const wordlist = [
   "pērvei", //name (v.)
   "orange" //to sleep (outdated)
 ].map(e => e.replace(/õ/g, "o"+"̃").replace(/~/,"̃"))
+
+export default wordlist

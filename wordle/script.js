@@ -45,7 +45,16 @@ keys.low[0].unshift("õ");
 
 let h = 0;
 
-var word = wordlist[Math.floor(Math.random() * wordlist.length)];
+var word = 'abcdef'
+var wordlist = []
+fetch('/wordle/word')
+  .then(v => v.text())
+  .then(v => word = v.trim())
+
+fetch('/wordle/wordlist.json')
+  .then(v => v.json())
+  .then(v => wordlist = v)
+
 function makeKeys(layout = "low") {
   kb.innerText = "";
   keys[layout].forEach((e, i) => {
