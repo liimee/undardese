@@ -65,8 +65,8 @@ function makeKeys(layout = "low") {
       let cel = document.createElement("span");
       cel.classList.add("key");
       cel.innerText = ch;
-      if(chars.y.includes(ch)) cel.style.backgroundColor = 'rgb(202, 138, 4)';
-      if(chars.g.includes(ch)) cel.style.backgroundColor = 'rgb(21, 128, 61)';
+      if(chars.y.includes(ch)) cel.classList.add('ye')
+      if(chars.g.includes(ch)) cel.classList.add('gr');
       el.appendChild(cel);
       if (ch == "⌫") {
         cel.onclick = () => {
@@ -186,8 +186,8 @@ function bg(f) {
     if (!f || (f && s < h)) {
       const f = {};
       check(s).forEach((v, i) => {
-        if (s === h) document.querySelector('#gr').children[(s * a) + i].style.transition = `background-color .4s ${i / 10}s`
-        document.querySelector('#gr').children[(s * a) + i].style.backgroundColor = v === 3 ? 'rgba(255, 255, 255, 0.5)' : v === 2 ? 'rgb(202, 138, 4)' : 'rgb(21, 128, 61)';
+        if (s === h) document.querySelector('#gr').children[(s * a) + i].style.transition = `background-color .4s ${i / 10}s, color .4s ${i / 10}s`
+        document.querySelector('#gr').children[(s * a) + i].className = v === 3 ? 'g h' : v === 2 ? 'g t' : 'g o';
         f[g[s][i]] = (f[g[s][i]]||0)+1;
         if((e[g[s][i]]||0) < v && find(g[s][i]).length >= f[g[s][i]] && s === h) e[g[s][i]] = v;
       })
@@ -256,5 +256,13 @@ function inf(b) {
   document.querySelector('#info').style.display = b ? 'flex' : 'none';
 }
 
+function tgd() {
+  document.body.className = document.querySelector('#dm').checked ? '' : 'light';
+  localStorage.setItem('theme', document.querySelector('#dm').checked)
+}
+
 makeKeys()
 renderGr();
+
+if(localStorage.getItem('theme') === 'true') document.querySelector('#dm').checked = true;
+else document.body.className = 'light'

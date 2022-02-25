@@ -123,3 +123,74 @@ button {
   border-radius: 8px;
   background-color: rgb(17, 24, 39);
 }
+
+.g.h {
+  background-color: rgb(21, 128, 61);
+}
+
+.g.h {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.g.t {
+  background-color: rgb(202, 138, 4);
+}
+
+.g.o {
+  background-color: rgb(21, 128, 61);
+}
+
+.sts {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  text-align: left;
+}
+
+.sts input {
+  text-align: right;
+}
+
+/* */
+
+body.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.light .g {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.light .g.h,
+.light .g.t,
+.light .g.o {
+  color: #fff;
+}
+
+.light button,
+.light .key {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light #info > div {
+  background-color: #f3f4f6;
+}
+
+.light .key.gr,
+.light .key.ye {
+  color: #fff;
+}
+
+.light .g.h {
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+/* */
+
+.key.ye {
+  background-color: rgb(202, 138, 4);
+}
+
+.key.gr {
+  background-color: rgb(21, 128, 61);
+}
