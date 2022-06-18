@@ -22,8 +22,8 @@ jobs:
       - name: Random Word
         run: |
           deno run --allow-read --allow-write wordle/getword.js
-          git config user.email "70614549+liimee@users.noreply.github.com"
-          git config user.name liimee
+          git config user.email "somebody@example.com"
+          git config user.name Undardese
           git add .
           git commit -m "Update Word"
 
